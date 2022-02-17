@@ -37,21 +37,18 @@ If you saw this ASCII art and some successful event logs, you may set your envir
 It is okay to fail it at the first time, (I took a hour to solve it!) so take a look at tips below.
 
 ## IDE Settings
-If you got a error message like "Unknown JVM target version: 17", you should adjust version of Gradle JVM.
+If you got a error message like "Unknown JVM target version: 17", you should adjust version of Gradle JVM. You can see the current options from **build.gradle.kts**.
 
+※ **Update the IDE before going to start.** The old version of IDE would cause some troubles or even give no options while setting the latest versions of plugins or SDKs. ([Guideline for Intellij IDEA](https://www.jetbrains.com/help/idea/update.html))
 
+### File > Project Structure
+1. Go Project Settings > Project, and check your SDK version. You can download some simply on the IDE, provided by vendors, or from the official Oracle website.
+2. (Optional) For Language level, select the test version for the latest one.
+3. Move on to Project Settings > Modules, and select your project. Click Dependencies tab, and change the Module SDK.
+4. Select Kotlin for your sources. Adjust the Language level and API version.
 
-1. Go File > Settings (Intellij IDEA > Preferences for macOS).
+### File > Settings
+1. (Optional for macOS: open Intellij IDEA > Preferences.)
 2. Open the tab on the left side. Build, Execution, Deployment > Build Tools > Gradle.
 3. (Optional) Select "Intellij IDEA" for Build and run using/Run tests using. It will make building much faster, but might cause some problems on not supporting parts. 
-4. Select Gradle JVM. You can download some simply on the IDE, provided by vendors, or from the Oracle website.
-5. IF you still have a problem with downloaded JVM, (e.g. the option becomes red text, or deselected after closing the window) 
-
-If you want to use Gradle JVM 17 for Kotlin, you should upgrade your IDE to the latest version to get Kotlin plugin version 1.6.
-Otherwise, you cannot access to JVM 17 option from your IDE at all.
-
-Open build.gradle, and change
-
-    jvmTarget = "YOUR_JVM_VERSION"
-    
-(for my case "17") in kotlinOptions.
+4. Select Gradle JVM.
