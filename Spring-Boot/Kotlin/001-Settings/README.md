@@ -29,7 +29,7 @@ My first setting was:
 After downloading it, you can open it with your IDE by pointing to the project ('demo' for me) folder, on File > Open.
 
 ## Test
-When you open the project, you will see DemoApplicationTests in src > test > kotlin > com.example.demo. Give running it a try.
+When you open the downloaded project, you will see DemoApplicationTests in src > test > kotlin > com.example.demo. Give running it a try.
 
 ![001Init](https://user-images.githubusercontent.com/48712088/154465956-40c7c360-dce2-4309-932d-0d976cb2fdfd.png)
 
@@ -37,7 +37,7 @@ If you saw this ASCII art and some successful event logs, you may set your envir
 It is okay to fail it at the first time, (I took a hour to solve it!) so take a look at tips below.
 
 ## IDE Settings
-If you got a error message like "Unknown JVM target version: 17", you should adjust version of Gradle JVM. You can see the current options from **build.gradle.kts**.
+If you got an error message like "Unknown JVM target version: 17", you should adjust version of Gradle JVM. You can see the current options from **build.gradle.kts**.
 
 ※ **Update the IDE before going to start.** The old version of IDE would cause some troubles or even give no options while setting the latest versions of plugins or SDKs. ([Guideline for Intellij IDEA](https://www.jetbrains.com/help/idea/update.html))
 
