@@ -4,9 +4,9 @@
 ### Spring Framework
 We are using Spring framework for our project. It supports us for developing applications.
 ### Spring Boot
-Spring Boot is an extension of the Spring framework to make developing web application and microservices. It provides all features of Spring but also easier to use. It is very useful to develop REST API.
+Spring Boot is an extension of the Spring framework to make developing web application and microservices. It provides all features of Spring but also easier to use. It is very useful to develop REST(REpresentational State Transfer) API.
 ### Gradle
-
+Gradle is the most common build tool in Kotlin, and recommended since it provides Kotlin DSL(Domain Specific Language).
 
 ## Files
 Both .kt and .kts are Kotlin files including Kotlin source codes.
