@@ -1,5 +1,5 @@
 # Structure
-
+This time we will learn the structure of the project to understand it.
 ## Components
 ### Spring Framework
 We are using Spring framework for our project. It supports us for developing applications.
@@ -10,6 +10,11 @@ Gradle is the most common build tool in Kotlin, and recommended since it provide
 
 ## Files
 Both .kt and .kts are Kotlin files including Kotlin source codes.
+### .gradle
+![002dotGradle](https://user-images.githubusercontent.com/48712088/154800008-2526f362-1c63-4cc5-8742-9e7b20fd5455.png)
+
+A folder **.gradle**, containing native information and caches (on plugins and dependencies), is used by our IDE, Intellij IDEA. At the first time the project is built, it download plugins and dependencies into the folder, and gets them from it when they are needed. the IDE This can be safely ignored by users, and we should set our version control to ignore it.
+
 ### .kt
 This is the normal Kotlin source file being compiled by the Kotlin compiler.
 ### .kts
