@@ -10,6 +10,12 @@ After following the settings from the previous units, it's time to create the cl
 
 First, let's create a new class in *src/main/kotlin/com/example/demo/Greeting.kt*.
 
+    package com.example.demo
+
+    data class Greeting(val id: Long, val content: String)
+    
+Quite simple in Kotlin! This will be the resource representation class for the data **id** and **content**.
+
 ## Test
 If you finished your project, run the application by putting this on the terminal.
 
