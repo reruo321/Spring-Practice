@@ -38,6 +38,11 @@ Next, we need a controller to handle HTTP requests. Attach **@RestController** a
         }
     }
 
+### Explanation
+- **@RestController**: @Controller + @ResponseBody + α. This annotation marks the class as a controller, whose methods return a domain object instead of a view. The class GreetingController becomes the controller in the example.
+- **@GetMapping**: Ensures that HTTP GET requests to /greeting are mapped to the greeting() method.
+- **@RequestParam**: Binds the value of the query parameter into the parameter of the greeting() method. The example has *value = "name"* as a query, and if the parameter is absent "World" would be used as a default value.
+
 ## Test
 If you finished your project, run the application by putting this on the terminal.
 
@@ -46,6 +51,3 @@ If you finished your project, run the application by putting this on the termina
 ![003tomcat](https://user-images.githubusercontent.com/48712088/155746385-bb17aa31-a9e4-4a2c-8636-d5752ab61a84.png)
 
 Wait a minute, and if you see this line, your service will be up on http://localhost:8080/. After the message "Completed initialization in N ms", let's check http://localhost:8080/greeting!
-
-
-## Explanation
