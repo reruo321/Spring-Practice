@@ -51,3 +51,7 @@ If you finished your project, run the application by putting this on the termina
 ![003tomcat](https://user-images.githubusercontent.com/48712088/155746385-bb17aa31-a9e4-4a2c-8636-d5752ab61a84.png)
 
 Wait a minute, and if you see this line, your service will be up on http://localhost:8080/. After the message "Completed initialization in N ms", let's check http://localhost:8080/greeting!
+
+![003greeting](https://user-images.githubusercontent.com/48712088/156212494-0a10fbc1-9358-4163-8928-2f573acea1ad.png)
+
+One more thing, try to provide a *name* query string parameter. If you visit http://localhost:8080/greeting?name=SpringGuy (add ?name=QUERY) for example, you'll see "Hello, SpringGuy!" with the increased id value.
