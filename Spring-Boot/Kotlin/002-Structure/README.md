@@ -50,8 +50,19 @@ These are individual files in the solution root.
 * HELP.md: A markdown file for some help references.
 * **settings.gradle.kts**: [Name settings script](https://docs.gradle.org/current/userguide/kotlin_dsl.html).
 
-#### build.gradle(.kts)
-**build.gradle** is the main configuration file for the project's build and dependencies. I uploaded my entire codes above, which is provided for you too as a default when using Spring Initializr. Let's take a look at the sample step by step.
+#### .kt
+This is the normal Kotlin source file being compiled by the Kotlin compiler.
+#### .kts
+.kts is the script file, without needing an additional compilation.
+
+    kotlinc -script FILE_NAME.kts
+    
+You can run it with this command. It is like a bash or python script, so it does not need main function in it.
+
+.gradle.kts extension for the build scripts especially activates the Kotlin DSL.
+
+### build.gradle(.kts)
+**build.gradle** is the main configuration file for the project's build and dependencies, which is in the solution root. I uploaded my file, which is provided for you too as a default when using Spring Initializr. Let's take a look at the sample step by step.
 
     import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
     
@@ -72,13 +83,50 @@ You can also apply Kotlin plugins for Gradle, such as *jvm* or *plugin.spring* l
 
         kotlin("jvm") version "1.6.10"
 
-#### .kt
-This is the normal Kotlin source file being compiled by the Kotlin compiler.
-#### .kts
-.kts is the script file, without needing an additional compilation.
+Now go on to the next codes... Here are some properties.
 
-    kotlinc -script FILE_NAME.kts
-    
-You can run it with this command. It is like a bash or python script, so it does not need main function in it.
+        group = "com.example"
+        version = "0.0.1-SNAPSHOT"
+        java.sourceCompatibility = JavaVersion.VERSION_17
+        
+* group: If the build produces a JAR file published to a repository, it will be under the specified group.
+* version: The version of this project.
+* java.sourceCompatibility: Define which language version of Java your source files should be treated as.
 
-.gradle.kts extension for the build scripts especially activates the Kotlin DSL.
+        repositories {
+            mavenCentral()
+        }
+        
+Repository! It might be familiar if you are a Git user. In Gradle, it is used to specify where to download the library for the dependencies, using a repositories {} block.
+
+        dependencies {
+            implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+            implementation("org.springframework.boot:spring-boot-starter-web")
+            implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+            implementation("org.jetbrains.kotlin:kotlin-reflect")
+            implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+            developmentOnly("org.springframework.boot:spring-boot-devtools")
+            testImplementation("org.springframework.boot:spring-boot-starter-test")
+        }
+        
+And you can choose the dependencies for your project. ([More information](https://docs.gradle.org/current/userguide/building_java_projects.html)) What you have selected from the Initializr would have been declared here.
+* implementation: Used for compilation & runtime
+* developmentOnly: Prevents devtools from being transitively applied to other modules that use your project
+* testImplementation: Test equivalent of implementation
+
+        tasks.withType<KotlinCompile> {
+            kotlinOptions {
+                freeCompilerArgs = listOf("-Xjsr305=strict")
+                jvmTarget = "17"
+            }
+        }
+        
+This is the configuration of all Kotlin compilation tasks in the project. ([Documentation](https://kotlinlang.org/docs/gradle.html#compiler-options))
+* -Xjsr305: The compiler flag for the JSR 305 checks, having one of the following options: -Xjsr305={strict|warn|ignore}. This is related to null-safety for the Spring API in Kotlin.
+
+        tasks.withType<Test> {
+            useJUnitPlatform()
+        }
+        
+Finally the last thing! The block configures the test task registered in the project.
+* useJUnitPlatform(): Uses JUnit Platform, one of the most popular unit-testing frameworks in the Java ecosystem.
