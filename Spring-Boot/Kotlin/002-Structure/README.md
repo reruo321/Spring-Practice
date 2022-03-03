@@ -50,6 +50,10 @@ These are individual files in the solution root.
 * HELP.md: A markdown file for some help references.
 * **settings.gradle.kts**: [Name settings script](https://docs.gradle.org/current/userguide/kotlin_dsl.html).
 
+#### build.gradle(.kts)
+**build.gradle** is the main configuration file for the project's build and dependencies. Let's take a look at the sample step by step. (I uploaded my file above.)
+
+
 #### .kt
 This is the normal Kotlin source file being compiled by the Kotlin compiler.
 #### .kts
