@@ -51,8 +51,26 @@ These are individual files in the solution root.
 * **settings.gradle.kts**: [Name settings script](https://docs.gradle.org/current/userguide/kotlin_dsl.html).
 
 #### build.gradle(.kts)
-**build.gradle** is the main configuration file for the project's build and dependencies. Let's take a look at the sample step by step. (I uploaded my file above.)
+**build.gradle** is the main configuration file for the project's build and dependencies. I uploaded my entire codes above, which is provided for you too as a default when using Spring Initializr. Let's take a look at the sample step by step.
 
+    import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+    
+First of all, you need to import KotlinCompile to build a Kotlin project with Gradle.
+
+    plugins {
+        id("org.springframework.boot") version "2.6.3"
+        id("io.spring.dependency-management") version "1.0.11.RELEASE"
+        kotlin("jvm") version "1.6.10"
+        kotlin("plugin.spring") version "1.6.10"
+    }
+    
+We can apply some plugins Gradle provides, using the Gradle plugins DSL. You can find community plugins from [https://plugins.gradle.org/](the Gradle plugin portal). Give the fully qualified plugin id to declare dependencies of them.
+
+        id("org.springframework.boot") version "2.6.3" 
+
+You can also apply Kotlin plugins for Gradle, such as *jvm* or *plugin.spring* like the example.
+
+        kotlin("jvm") version "1.6.10"
 
 #### .kt
 This is the normal Kotlin source file being compiled by the Kotlin compiler.
