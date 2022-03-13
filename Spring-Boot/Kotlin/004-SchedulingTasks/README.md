@@ -6,6 +6,50 @@ how to build an application with scheduling tasks.
 We are going to embody a function to the application, which prints out the current time every five seconds.
 
 ## Creation
+Before we create classes, we need to add a dependency to use awaitility library on Gradle.
+
+(The guide says we should specify the version 3.1.2 for this project.)
+
+	testImplementation("org.awaitility:awaitility:3.1.2")
+
+Next, create ScheduledTasks.kt in your package. (for me com.example.demo)
+
+    package com.example.demo
+
+    import org.slf4j.LoggerFactory
+    import org.springframework.scheduling.annotation.Scheduled
+    import org.springframework.stereotype.Component
+    import java.text.SimpleDateFormat
+    import java.util.*
+
+    @Component
+    class ScheduledTasks {
+        companion object {
+            private val log = LoggerFactory.getLogger(ScheduledTasks::class.java)
+            private val dateFormat = SimpleDateFormat("HH:mm:ss")
+        }
+        @Scheduled(fixedRate = 5000)
+        fun reportCurrentTime(){
+            log.info("The time is now {}", dateFormat.format(Date()))
+        }
+    }
+
+Finally, let's make SchedulingTasksApplication.kt!
+
+    package com.example.demo
+
+    import org.springframework.boot.SpringApplication
+    import org.springframework.boot.autoconfigure.SpringBootApplication
+    import org.springframework.scheduling.annotation.EnableScheduling
+
+    @SpringBootApplication
+    @EnableScheduling
+    class SchedulingTasksApplication
+
+    fun main(args: Array<String>){
+        SpringApplication.run(SchedulingTasksApplication::class.java)
+    }
+
 ## Test
 After finishing the creation, let's run the application!
 
