@@ -50,6 +50,11 @@ Finally, let's make SchedulingTasksApplication.kt!
         SpringApplication.run(SchedulingTasksApplication::class.java)
     }
 
+## Explanation
+* **@Component**: ([Detailed Guide](https://www.baeldung.com/spring-component-annotation)) Allows Spring to automatically detect our custom beans. (We learned from Unit 003 that @RestController = @Controller + @ResponseBody + α!)
+* **@Scheduled**: 
+* **Bean**: The key concept of the Spring framework - An object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
+
 ## Test
 After finishing the creation, let's run the application!
 
