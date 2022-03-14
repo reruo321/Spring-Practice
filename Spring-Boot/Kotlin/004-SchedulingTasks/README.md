@@ -51,10 +51,35 @@ Finally, let's make SchedulingTasksApplication.kt!
     }
 
 ## Explanation
-* **@Component**: ([Detailed Guide](https://www.baeldung.com/spring-component-annotation)) Allows Spring to automatically detect our custom beans. (We learned from Unit 003 that @RestController = @Controller + @ResponseBody + α!)
-* **@Scheduled**: 
+### @Component
+**@Component** ([Detailed Guide](https://www.baeldung.com/spring-component-annotation)) allows Spring to automatically detect our custom beans. (We learned from Unit 003 that @RestController = @Controller + @ResponseBody + α!)
+### @Scheduled
+**@Scheduled** annotation makes a task scheduled.
+
+To enable support for scheduling, use **@EnableScheduling**. It will allow detection of @Scheduled annotations on any Spring-managed bean in the container.
+
+	@Configuration
+	@EnableScheduling
+	public class MyConfig{
+		// ...@Bean...
+	}
+	
+	
+	package com.mycon.tasks
+	public class MyTask{
+		@Scheduled(fixedRate=5000)
+		public void mywork(){
+			// ...
+		}
+	}
+
+#### Rules
+To annotate a method with it
+1) It should have a void return type. (Even if not, its return will be ignored.)
+2) It should not expect any parameters.
+
 * **Bean**: The key concept of the Spring framework - An object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
-* **IoC**(Inversion of Control): 
+* **IoC**(Inversion of Control): Principle in SE which transfers the control of objects or portions of a program to a container or framework, most in OOP. DI is one of the mechanisms we can achieve IoC.
 
 ## Test
 After finishing the creation, let's run the application!
