@@ -60,15 +60,36 @@ To enable support for scheduling, use **@EnableScheduling**. It will allow detec
 
 	@Configuration
 	@EnableScheduling
-	public class MyConfig{
+	class MyConfig{
 		// ...@Bean...
 	}
 	
+And to make MyTask.mywork() is called once every 5000ms,
 	
 	package com.mycon.tasks
-	public class MyTask{
+	class MyTask{
 		@Scheduled(fixedRate=5000)
-		public void mywork(){
+		fun mywork(){
+			// ...
+		}
+	}
+
+If MyTask was annotated with @Component, you can set the configuration like this:
+
+	@Configuration
+	@EnableScheduling
+	@ComponentScan(basePackages="com.mycon.tasks")
+	public class MyConfig{
+	}
+	
+We can also declare methods with @Scheduled directly within @Configuration classes.
+
+	@Configuration
+	@EnableScheduling
+	class MyConfig{
+	
+		@Scheduled(fixedRate=5000)
+		fun mywork(){
 			// ...
 		}
 	}
