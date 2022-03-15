@@ -56,6 +56,7 @@ Finally, let's make SchedulingTasksApplication.kt!
 
 If an object is in a package outside of the project scope, or if it comes from a third-party source, we cannot annotate @Component to it.
 
+#### @Component vs @Bean
 Although both @Component and @Bean gather beans at runtime, @Component is added to classes, while @Bean is for methods so that Spring can store their results as beans. @Component is compatible with Spring's auto-detection, but you need manal class instantiation for @Bean. Since the latter decouples the instantiation of the bean from its class definition, it is useful when to make third-party classes into Spring beans or introduce bean logic.
 
 ### @Scheduled
@@ -104,6 +105,43 @@ To annotate a method with it
 1) It should have a void return type. (Even if not, its return will be ignored.)
 2) It should not expect any parameters.
 
+### @SpringBootApplication
+**@SpringBootApplication** is an annotation to mark the main class of a Spring Boot application.
+
+	@SpringBootApplication
+	class MyApplication
+
+	fun main(args: Array<String>) {
+	    SpringApplication.run(MyApplication::class.java, *args)
+	}
+
+We can say @SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan.
+
+#### @Configuration
+**@Configuration** indicates that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
+
+	@Configuration
+	class MyConfig{
+		@Bean
+		fun myBean(): MyBean {
+			// ...
+		}
+	}
+
+#### @EnableAutoConfiguration
+**@EnableAutoConfiguration** literally enables auto-configuration. It should be used with @Configuration.
+
+#### @ComponentScan
+**@ComponentScan** configures which packages to scan for @Configuration-annotated classes. Multiple @ComponentScan configurations are also allowed.
+
+	@Configuration
+	@ComponentScan(basePackages = "com.example.demo")
+	@ComponentScan(basePackageClasses = MyConfig.class)
+	class MyConfig {
+	//...
+	}
+
+### Others
 * **Bean**: The key concept of the Spring framework - An object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
 * **IoC**(Inversion of Control): Principle in SE which transfers the control of objects or portions of a program to a container or framework, most in OOP. DI is one of the mechanisms we can achieve IoC.
 
