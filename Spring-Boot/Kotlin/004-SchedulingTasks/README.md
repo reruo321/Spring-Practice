@@ -52,7 +52,12 @@ Finally, let's make SchedulingTasksApplication.kt!
 
 ## Explanation
 ### @Component
-**@Component** ([Detailed Guide](https://www.baeldung.com/spring-component-annotation)) allows Spring to automatically detect our custom beans. (We learned from Unit 003 that @RestController = @Controller + @ResponseBody + α!)
+**@Component** ([Detailed Guide](https://www.baeldung.com/spring-component-annotation)) allows Spring to automatically detect our custom beans. (We learned from Unit 003 that @RestController = @Controller + @ResponseBody + α!) It also acts a meta-annotation of @Controller, @Service, and @Repository which are the same and composed with it.
+
+If an object is in a package outside of the project scope, or if it comes from a third-party source, we cannot annotate @Component to it.
+
+Although both @Component and @Bean gather beans at runtime, @Component is added to classes, while @Bean is for methods so that Spring can store their results as beans. @Component is compatible with Spring's auto-detection, but you need manal class instantiation for @Bean. Since the latter decouples the instantiation of the bean from its class definition, it is useful when to make third-party classes into Spring beans or introduce bean logic.
+
 ### @Scheduled
 **@Scheduled** annotation makes a task scheduled.
 
