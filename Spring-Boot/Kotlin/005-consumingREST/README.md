@@ -12,7 +12,7 @@ Since the guide used https://quoters.apps.pcfone.io/api/random, we are going to 
 
 I do not think we can test our project with this website... Maybe deprecated?
 
-(I will find alternative and continue)
+So, I instead chose two other websites: https://type.fit/api/quotes and https://jsonplaceholder.typicode.com/.
 
 ## Creation
 
