@@ -18,7 +18,7 @@ So, I instead chose two other websites: https://type.fit/api/quotes and https://
 ### Quotes
 
 ## Posts
-Let's move on to the second practice with https://jsonplaceholder.typicode.com/!
+Let's move on to the second practice with https://jsonplaceholder.typicode.com/posts!
 
 First, create a data class, Post. Free to declare toString() yourself to easily check the log if fetched correctly.
 
