@@ -143,10 +143,24 @@ Testing this, it seems to be okay but soon it ends with an exception.
 
     java.lang.IllegalStateException: Failed to execute CommandLineRunner
 
-And if you look the message carefully, you will find
+### Content Type
+
+If you look the message carefully, you will find
 
     Caused by: org.springframework.web.client.UnknownContentTypeException: Could not extract response: no suitable HttpMessageConverter found for response type [class [Lcom.example.demo.Quote;] and content type [text/plain;charset=UTF-8] 
 
-It says response type or "content type" is not suitable. The content type is an indicator telling how to interpret the data present in the request/response. JSON is also one of the content types we can consume or produce!
+It says response type or "content type" is not suitable. **Content type** is an indicator telling how to interpret the data present in the request/response. It is one kind of **HTTP headers**, which is a data structure representing HTTP request or response headers. JSON is also one of the content types we can consume or produce! Moreover, there are three directives in the HTTP headers Content-type: **media type**, **charset**, and **boundary**.
 
-Then how can we make it?
+Then how can we know what kind of media from the response is? Let's find it on the first worked case first!
+
+    val response = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/posts", arrayOf<Post>()::class.java)
+        
+From here, we could get the response. It would contain headers with the information of content type. We can dig it up by calling the getters...
+
+    // Kotlin expression
+    response.headers.contentType
+    
+    // Java expression
+    response.getHeaders().getContentType()
+    
+After
