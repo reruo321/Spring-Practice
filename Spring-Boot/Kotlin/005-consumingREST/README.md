@@ -81,7 +81,24 @@ Next, write a consuming application.
 Works well!
 
 ## Quotes
-Now let's move on to the next website, https://type.fit/api/quotes! You might have tried this modifying the previous codes a little bit...
+Now let's move on to the next website, https://type.fit/api/quotes! You might have tried this by modifying the previous codes a little bit...
+
+### First Try
+(Quote.kt)
+
+    package com.example.demo
+
+    import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    data class Quote(val text: String, val author: String) {
+        @Override
+        override fun toString(): String {
+            return "\"$text\"\n   - $author"
+        }
+    }
+    
+(ConsumingRestApplication.kt)
 
     package com.example.demo
 
@@ -122,6 +139,14 @@ Now let's move on to the next website, https://type.fit/api/quotes! You might ha
         SpringApplication.run(ConsumingRestApplication::class.java)
     }
 
-## Explanation
+Testing this, it seems to be okay but soon it ends with an exception.
 
-## Test
+    java.lang.IllegalStateException: Failed to execute CommandLineRunner
+
+And if you look the message carefully, you will find
+
+    Caused by: org.springframework.web.client.UnknownContentTypeException: Could not extract response: no suitable HttpMessageConverter found for response type [class [Lcom.example.demo.Quote;] and content type [text/plain;charset=UTF-8] 
+
+It says response type or "content type" is not suitable. The content type is an indicator telling how to interpret the data present in the request/response. JSON is also one of the content types we can consume or produce!
+
+Then how can we make it?
