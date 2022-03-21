@@ -163,4 +163,33 @@ From here, we could get the response. It would contain headers with the informat
     // Java expression
     response.getHeaders().getContentType()
     
-After
+When you get a log printing the name of the content type, you will see
+
+    application/json;charset=utf-8
+
+Oh, the first website was giving us the response with the JSON type! Then how about the second one?
+
+Before we add some logging codes, change the response type on getForEntity() temporarily...
+
+Change something like this
+
+    val response = restTemplate.getForEntity("https://type.fit/api/quotes", arrayOf<Quote>()::class.java)
+    
+To this:
+
+    val response = restTemplate.getForEntity("https://type.fit/api/quotes", String::class.java)
+    
+This will retrieve an entity in String type. Now see its content type.
+
+    text/plain;charset=UTF-8
+
+Okay, it turned out to be plain text!
+
+One more thing: if you try these two statements,
+
+    val quotes = response.body
+    log.info(quotes)
+    
+You will see the whole contents response from the website!
+
+![005plaintext](https://user-images.githubusercontent.com/48712088/159326602-6ed032ed-aec4-4e26-9bfe-55c53a596fe9.png)
