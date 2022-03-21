@@ -145,7 +145,7 @@ Testing this, it seems to be okay but soon it ends with an exception.
 
 ### Content Type
 
-If you look the message carefully, you will find
+If you look at the message carefully, you will find
 
     Caused by: org.springframework.web.client.UnknownContentTypeException: Could not extract response: no suitable HttpMessageConverter found for response type [class [Lcom.example.demo.Quote;] and content type [text/plain;charset=UTF-8] 
 
