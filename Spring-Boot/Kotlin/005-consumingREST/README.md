@@ -200,6 +200,24 @@ Now you may wonder how to convert the plain text to JSON, so that you can finall
         return rest
     }
 
+If you log rest.messageConverters and their supportedMediaTypes,
+
+    rest.messageConverters.forEach{ log.info("$it - ${it.supportedMediaTypes}\n") }
+
+you will notice a bunch of message converters included in your RestTemplate. Among them, we need **MappingJackson2HttpMessageConverter**, which can read and write JSON using Jackson's ObjectMapper.
+
+Oh, you might already have the converter, but it won't support text/plain.
+
+![005converter](https://user-images.githubusercontent.com/48712088/159547611-6d9de23f-2136-4254-b87d-77c6910a6121.png)
+
+(Look, none of my MappingJackson2HttpMessageConverters support text/plain!)
+
+What we should do here is: of course let's add a converter supporting it!
+
+        val converter = MappingJackson2HttpMessageConverter()
+        converter.supportedMediaTypes = listOf(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON)
+        rest.messageConverters.add(0, converter)
+
 
 
     @Bean
