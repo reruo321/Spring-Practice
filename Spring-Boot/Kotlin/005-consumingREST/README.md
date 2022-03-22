@@ -195,6 +195,7 @@ You can see the whole contents response from the website!
 ### Plain Text to JSON Conversion
 Now you may wonder how to convert the plain text to JSON, so that you can finally get your custom POJO. Take a look at restTemplate().
 
+    @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
         val rest = builder.build()
         return rest
