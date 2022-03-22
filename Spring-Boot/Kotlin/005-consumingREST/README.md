@@ -191,3 +191,30 @@ One more thing: if you try these two statements,
 You can see the whole contents response from the website!
 
 ![005plaintext](https://user-images.githubusercontent.com/48712088/159326602-6ed032ed-aec4-4e26-9bfe-55c53a596fe9.png)
+
+### Plain Text to JSON Conversion
+Now you may wonder how to convert the plain text to JSON, so that you can finally get your custom POJO. Take a look at restTemplate().
+
+    fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
+        val rest = builder.build()
+        return rest
+    }
+
+
+
+    @Bean
+    fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
+        val rest = builder.build()
+        val converter = MappingJackson2HttpMessageConverter()
+        converter.objectMapper = ObjectMapper().registerModule(KotlinModule.Builder()
+                .withReflectionCacheSize(512)
+                .configure(KotlinFeature.NullToEmptyCollection, false)
+                .configure(KotlinFeature.NullToEmptyMap, false)
+                .configure(KotlinFeature.NullIsSameAsDefault, false)
+                .configure(KotlinFeature.SingletonSupport, false)
+                .configure(KotlinFeature.StrictNullChecks, false)
+                .build())
+        converter.supportedMediaTypes = listOf(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON)
+        rest.messageConverters.add(0, converter)
+        return rest
+    }
