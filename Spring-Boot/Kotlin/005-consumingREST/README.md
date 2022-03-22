@@ -55,7 +55,6 @@ Next, write a consuming application.
         @Bean
         fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
             val rest = builder.build()
-            rest.messageConverters.add(0, StringHttpMessageConverter(StandardCharsets.UTF_8))
             return rest
         }
         @Bean
@@ -120,7 +119,6 @@ Now let's move on to the next website, https://type.fit/api/quotes! You might ha
         @Bean
         fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
             val rest = builder.build()
-            rest.messageConverters.add(0, StringHttpMessageConverter(StandardCharsets.UTF_8))
             return rest
         }
         @Bean
@@ -151,7 +149,7 @@ If you look at the message carefully, you will find
 
 It says response type or "content type" is not suitable. **Content type** is an indicator telling how to interpret the data present in the request/response. It is one kind of **HTTP headers**, which is a data structure representing HTTP request or response headers. JSON is also one of the content types we can consume or produce! Moreover, there are three directives in the HTTP headers Content-type: **media type**, **charset**, and **boundary**.
 
-Then how can we know what kind of media from the response is? Let's find it on the first worked case first!
+Then how can we know what kind of media from the response is? Let's find it on the first worked case!
 
     val response = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/posts", arrayOf<Post>()::class.java)
         
@@ -190,6 +188,6 @@ One more thing: if you try these two statements,
     val quotes = response.body
     log.info(quotes)
     
-You will see the whole contents response from the website!
+You can see the whole contents response from the website!
 
 ![005plaintext](https://user-images.githubusercontent.com/48712088/159326602-6ed032ed-aec4-4e26-9bfe-55c53a596fe9.png)
