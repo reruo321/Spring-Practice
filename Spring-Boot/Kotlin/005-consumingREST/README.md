@@ -219,7 +219,7 @@ What we should do here is: of course let's add a converter supporting it!
         converter.supportedMediaTypes = listOf(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON)
         rest.messageConverters.add(0, converter)
 
-
+To be continued
 
     @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
