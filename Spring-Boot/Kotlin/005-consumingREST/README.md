@@ -167,9 +167,7 @@ When you get a log printing the name of the content type, you will see
 
 Oh, the first website was giving us the response with the JSON type! Then how about the second one?
 
-Before we add some logging codes, change the response type on getForEntity() temporarily...
-
-Change something like this
+Before we try some deeper logging, to check the response in string format, change a statement something like this,
 
     val response = restTemplate.getForEntity("https://type.fit/api/quotes", arrayOf<Quote>()::class.java)
     
@@ -177,7 +175,7 @@ To this:
 
     val response = restTemplate.getForEntity("https://type.fit/api/quotes", String::class.java)
     
-This will retrieve an entity in String type. Now see its content type.
+This will retrieve a response in ResponseEntity\<String\> type. Now see its content type.
 
     text/plain;charset=UTF-8
 
@@ -188,12 +186,12 @@ One more thing: if you try these two statements,
     val quotes = response.body
     log.info(quotes)
     
-You can see the whole contents response from the website!
+You can log the whole contents response from the website!
 
 ![005plaintext](https://user-images.githubusercontent.com/48712088/159326602-6ed032ed-aec4-4e26-9bfe-55c53a596fe9.png)
 
-### Plain Text to JSON Conversion
-Now you may wonder how to convert the plain text to JSON, so that you can finally get your custom POJO. Take a look at restTemplate().
+### Deserialize
+Now you may wonder how to convert the plain text to JSON, so that you can finally deserialize the data to your custom POJO. Take a look at restTemplate().
 
     @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
@@ -219,21 +217,63 @@ What we should do here is: of course let's add a converter supporting it!
         converter.supportedMediaTypes = listOf(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON)
         rest.messageConverters.add(0, converter)
 
-To be continued
+p.s. If you have a trouble with the conversion while using Kotlin, it might be:
+
+    No Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator.
+
+This occurs because your Jackson library does not know how to create your model without any empty constructor, or a constructor with some parameters not annotated with @JsonProperty("field_name"). Use the annotation @JsonProperty("field_name"), or if you think it will be a little bit dirty, register a module called [jackson-module-kotlin](https://github.com/FasterXML/jackson-module-kotlin).
+
+(build.gradle.kts) Add it into the dependencies.
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
+    
+(ConsumingRestApplication.kt) Register the module with your ObjectMapper instance. Pick up one of the usage from the website!
+
+    converter.objectMapper = ObjectMapper().registerKotlinModule()
+
+Here are the final form of my custom restTemplate().
 
     @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate{
         val rest = builder.build()
         val converter = MappingJackson2HttpMessageConverter()
-        converter.objectMapper = ObjectMapper().registerModule(KotlinModule.Builder()
-                .withReflectionCacheSize(512)
-                .configure(KotlinFeature.NullToEmptyCollection, false)
-                .configure(KotlinFeature.NullToEmptyMap, false)
-                .configure(KotlinFeature.NullIsSameAsDefault, false)
-                .configure(KotlinFeature.SingletonSupport, false)
-                .configure(KotlinFeature.StrictNullChecks, false)
-                .build())
+        converter.objectMapper = ObjectMapper().registerKotlinModule()
         converter.supportedMediaTypes = listOf(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON)
         rest.messageConverters.add(0, converter)
         return rest
     }
+
+### Non-nullable Type Error
+Almost done! Now you will get an error like this:
+
+    Caused by: org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Instantiation of [simple type, class com.example.demo.Quote] value failed for JSON property author due to missing (therefore NULL) value for creator parameter author which is a non-nullable type;
+
+This might be trivial but very important. (I was also in for an hour) Let's go back to see our POJO definition.
+
+(Quote.kt)
+
+    package com.example.demo
+
+    import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    data class Quote(val text: String, val author: String) {
+        @Override
+        override fun toString(): String {
+            return "\"$text\"\n   - $author"
+        }
+    }
+    
+The funny thing is, if you erase all things on *author*, you can fetch Quotes! What was the problem? By looking the website,
+
+![005quote](https://user-images.githubusercontent.com/48712088/159761639-203bd50b-589e-4f64-b6b2-8e3af23ba96e.png)
+
+There were some quotes whose author is *null*. Since we defined *author* in a non-nullable type, the constructor could not get the data! Let's add a question mark to the author's type, String.
+
+    data class Quote(val text: String, val author: String?)
+
+![005output](https://user-images.githubusercontent.com/48712088/159762491-a33dce57-fccd-4370-b7f1-6bb314ce21a6.png)
+
+Awesome!
+
+The project is gonna be too big, so I will continue some more related studies in the next project...
