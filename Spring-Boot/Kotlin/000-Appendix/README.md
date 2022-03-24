@@ -1,6 +1,8 @@
 # Appendix
 Here are some (maybe) useful tips for handling the environment!
 
+## Exclude a Source File
+
 ## Issues
 ### Not Recognized Dependencies?
 If you added some new dependencies but no luck to import them, look at the right side of Intellij. Click Gradle > Refresh Icon. (Reload All Gradle Projects)
