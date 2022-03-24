@@ -1,7 +1,25 @@
 # Appendix
 Here are some (maybe) useful tips for handling the environment!
 
-## Exclude a Source File
+## build.gradle.kts Settings
+
+### Set the Source Directory
+    sourceSets.main{
+       java.srcDir("src/main/kotlin")
+    }
+
+### Set the Main Class
+If you want to set the class named *exampleApplication* as the main, follow this syntax. Do not forget to add **Kt** to the class name!
+
+    springBoot {
+      mainClass.set("com.example.demo.exampleApplicationKt")
+    }
+
+
+### Exclude a Source File
+    sourceSets.main{
+      java.exclude("**/exampleApplication.kt")
+    }
 
 ## Issues
 ### Not Recognized Dependencies?
