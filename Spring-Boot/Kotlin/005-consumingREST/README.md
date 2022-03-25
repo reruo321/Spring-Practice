@@ -276,4 +276,18 @@ There were some quotes whose author is *null*. Since we defined *author* in a no
 
 Awesome!
 
+## Running
+I made the codes into two separated projects. If you want to run it, you should edit build.gradle to set the main class.
+
+(build.gradle.kts) Write one of these to set the main class of the whole project.
+
+    springBoot {
+    //  mainClass.set("com.example.demo.post.PostConsumingRestApplicationKt")
+    //	mainClass.set("com.example.demo.quote.QuoteConsumingRestApplicationKt")
+    }
+
+After setting, let's run it on the terminal!
+
+    ./gradlew bootRun
+
 The project is gonna be too big, so I will continue some more related studies in the next project...
