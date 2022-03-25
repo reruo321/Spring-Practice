@@ -282,8 +282,8 @@ I made the codes into two separated projects. If you want to run it, you should 
 (build.gradle.kts) Write one of these to set the main class of the whole project.
 
     springBoot {
-    //  mainClass.set("com.example.demo.post.PostConsumingRestApplicationKt")
-    //	mainClass.set("com.example.demo.quote.QuoteConsumingRestApplicationKt")
+    //   mainClass.set("com.example.demo.post.PostConsumingRestApplicationKt")
+    //   mainClass.set("com.example.demo.quote.QuoteConsumingRestApplicationKt")
     }
 
 After setting, let's run it on the terminal!
