@@ -3,3 +3,6 @@ In the previous project we used RestTemplate to consume the web services. If you
 
 ## Objective
 We will study how to fetch and post web services, using WebClient. Also, we will study many related things!
+
+### WebClient.Builder
+The interface **WebClinent.Builder** proivdes us a lot of options so that we can either use default values, or even customize them.
