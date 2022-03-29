@@ -4,5 +4,13 @@ In the previous project we used RestTemplate to consume the web services. If you
 ## Objective
 We will study how to fetch and post web services, using WebClient. Also, we will study many related things!
 
+## WebClient
+While RestTemplate is a blocking and synchronous client, **WebClient** is a non-blocking, reactive, and asynchronous web client, supporting HTTP/1.1.
+
+To use it,
+1. Create an instance of WebClient.
+2. Be ready for a request.
+3. Get & Handle the response.
+
 ### WebClient.Builder
-The interface **WebClinent.Builder** proivdes us a lot of options so that we can either use default values, or even customize them.
+The interface **WebClinent.Builder** provides us a lot of options so that we can either use default values, or even customize them.
