@@ -13,4 +13,13 @@ To use it,
 3. Get & Handle the response.
 
 ### WebClient.Builder
-The interface **WebClinent.Builder** provides us a lot of options so that we can either use default values, or even customize them.
+The interface **WebClinent.Builder** provides us a lot of options so that we can either use default values, or even customize them for a mutable builder.
+
+Here are some options you can configure with the interface.
+#### URI
+#### Header
+#### Cookie
+#### Request
+#### Filter
+#### Client Connector
+#### Codec
