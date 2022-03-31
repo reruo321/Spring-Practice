@@ -4,6 +4,10 @@ In the previous project we used RestTemplate to consume the web services. If you
 ## Objective
 We will study how to fetch and post web services, using WebClient. Also, we will study many related things!
 
+## Outline
+* Request - http headers, http method, requested url, bean type, http body
+* Response - http status, http headers, http body
+
 ## WebClient
 While RestTemplate is a blocking and synchronous client, **WebClient** is a non-blocking, reactive, and asynchronous web client, supporting HTTP/1.1.
 
@@ -19,6 +23,7 @@ Here are some options you can configure with the interface.
 #### URI
 **URI**, or **Uniform Resource Identifier**, is a unique sequence of characters that identifies a logical or physical resource used by web technologies. Both URL(Uniform Resource Locator), whose concept sounds familiar to us, and URN(Uniform Resource Name) are URI.
 #### Header
+As we have learned on the last project, **HTTP Header** contains a list of informative strings. Fields *Content-Type* and *Cookie* are also included in it.
 #### Cookie
 #### Request
 #### Filter
