@@ -17,6 +17,7 @@ The interface **WebClinent.Builder** provides us a lot of options so that we can
 
 Here are some options you can configure with the interface.
 #### URI
+**URI**, or **Uniform Resource Identifier**, is a unique sequence of characters that identifies a logical or physical resource used by web technologies. Both URL(Uniform Resource Locator), whose concept sounds familiar to us, and URN(Uniform Resource Name) are URI.
 #### Header
 #### Cookie
 #### Request
