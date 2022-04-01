@@ -9,7 +9,7 @@ We will study how to fetch and post web services, using WebClient. Also, we will
 * Response - http status, http headers, http body
 
 ## WebClient
-While RestTemplate is a blocking and synchronous client, **WebClient** is a non-blocking, reactive, and asynchronous web client, supporting HTTP/1.1.
+While RestTemplate is a blocking and synchronous client, **WebClient** is a non-blocking, reactive, and asynchronous web client, supporting HTTP/1.1. It is a part of Spring WebFlux, which provides reactive programming support for web applications.
 
 To use it,
 1. Create an instance of WebClient.
@@ -25,6 +25,7 @@ Here are some options you can configure with the interface.
 #### Header
 As we have learned on the last project, **HTTP Header** contains a list of informative strings. Fields *Content-Type* and *Cookie* are also included in it.
 #### Cookie
+While we are surfing the web, a web server creates small blocks of data called **HTTP cookies**, and places them into our devices via the web browser.
 #### Request
 #### Filter
 #### Client Connector
