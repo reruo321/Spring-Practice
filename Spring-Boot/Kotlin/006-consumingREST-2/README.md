@@ -27,6 +27,10 @@ As we have learned on the last project, **HTTP Header** contains a list of infor
 #### Cookie
 While we are surfing the web, a web server creates small blocks of data called **HTTP cookies**, and places them into our devices via the web browser.
 #### Request
+It enables a consumer to customize every request being built.
 #### Filter
+We can also add a filter to edit or examine a client request/response.
 #### Client Connector
+Configure the ClientHttpConnector to use, whose default is set to ReactorClientHttpConnector.
 #### Codec
+**Codec** encodes/decodes the outgoing/incoming data from the network call.
