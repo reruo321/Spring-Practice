@@ -34,3 +34,6 @@ We can also add a filter to edit or examine a client request/response.
 Configure the ClientHttpConnector to use, whose default is set to ReactorClientHttpConnector.
 #### Codec
 **Codec** encodes/decodes the outgoing/incoming data from the network call.
+
+## Get
+We will consume the contents from [here](https://jsonplaceholder.typicode.com/comments) using WebClient!
