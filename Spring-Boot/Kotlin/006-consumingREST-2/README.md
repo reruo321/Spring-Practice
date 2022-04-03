@@ -36,4 +36,29 @@ Configure the ClientHttpConnector to use, whose default is set to ReactorClientH
 **Codec** encodes/decodes the outgoing/incoming data from the network call.
 
 ## Get
-We will consume the contents from [here](https://jsonplaceholder.typicode.com/comments) using WebClient!
+We will first consume the contents from [here](https://jsonplaceholder.typicode.com/comments) using WebClient! Do not worry, the way to do it is quite similar to that of RestTemplate.
+
+Before we start to program our project, let's add two dependencies!
+
+	implementation("org.springframework.boot:spring-boot-starter-webflux:2.6.6")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+
+And looking at the website data, we can declare our comment POJO to deserialize it.
+
+(Comment.kt)
+
+    package com.example.demo
+
+    data class Comment(val postId: Int,
+                        val id: Int,
+                        val name: String,
+                        val email: String,
+                        val body: String)
+    {
+        override fun toString(): String {
+            return "[Post No. $postId] - ID. $id\n\"$body\"\n- $name ($email)"
+        }
+    }
+    
+
+    
