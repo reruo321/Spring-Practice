@@ -60,5 +60,53 @@ And looking at the website data, we can declare our comment POJO to deserialize 
         }
     }
     
+Next, let's declare the application! We may use create() or builder().build() to create a new WebClient.
 
-    
+	val client = WebClient.create()
+	
+OR
+	
+	val client = WebClient.builder().build()
+
+If you call a builder, you can build it after adding some configurations!
+
+	val client = WebClient.builder()
+	.baseUrl("http://localhost:8080")
+	.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+	.defaultUriVariables(Collections.singletonMap("url", "http://localhost:8080"))
+	.build()
+
+If you finish your WebClient creation, it's time to get the data! Wait, what are *Mono* and *Flux*? They are reactive types implementing the *Publisher* interface. If you want to retrieve a single resource, choose **Mono**. It handles zero or one result. Otherwise, select **Flux** to represent 0..N items.
+
+(WebClientConsuming.kt)
+
+	package com.example.demo
+
+	import org.slf4j.LoggerFactory
+	import org.springframework.boot.CommandLineRunner
+	import org.springframework.boot.SpringApplication
+	import org.springframework.boot.autoconfigure.SpringBootApplication
+	import org.springframework.context.annotation.Bean
+	import org.springframework.web.reactive.function.client.WebClient
+
+	@SpringBootApplication
+	class WebClientConsuming{
+	    companion object{
+		private val log = LoggerFactory.getLogger(WebClientConsuming::class.java)
+	    }
+	    @Bean
+	    fun webClientRestCall(): CommandLineRunner {
+		return CommandLineRunner {
+		    val client = WebClient.builder().build()
+		    val commentFlux = client.get()
+			    .uri("https://jsonplaceholder.typicode.com/comments")
+			    .retrieve()
+			    .bodyToFlux(Comment::class.java)
+		    commentFlux.subscribe(System.out::println)
+		}
+	    }
+	}
+
+	fun main(){
+	    SpringApplication.run(WebClientConsuming::class.java)
+	}
