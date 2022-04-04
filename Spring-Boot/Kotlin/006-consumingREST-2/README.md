@@ -78,6 +78,14 @@ If you call a builder, you can build it after adding some configurations!
 
 If you finish your WebClient creation, it's time to get the data! Wait, what are *Mono* and *Flux*? They are reactive types implementing the *Publisher* interface. If you want to retrieve a single resource, choose **Mono**. It handles zero or one result. Otherwise, select **Flux** to represent 0..N items.
 
+We are going to GET the flux of Comments. If you are only interested in the body, use bodyToFlux(). To extract a ResponseEntity with status, headers, and body, use toEntity().
+
+	val commentFlux = client.get()
+		.uri("https://jsonplaceholder.typicode.com/comments")
+		.retrieve()
+		.bodyToFlux(Comment::class.java)
+
+
 (WebClientConsuming.kt)
 
 	package com.example.demo
