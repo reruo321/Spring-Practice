@@ -35,7 +35,7 @@ Configure the ClientHttpConnector to use, whose default is set to ReactorClientH
 #### Codec
 **Codec** encodes/decodes the outgoing/incoming data from the network call.
 
-## Get
+## GET
 We will first consume the contents from [here](https://jsonplaceholder.typicode.com/comments) using WebClient! Do not worry, the way to do it is quite similar to that of RestTemplate.
 
 Before we start to program our project, let's add two dependencies!
@@ -123,3 +123,6 @@ Once you get it, subscribe it to consume the data from the upstream publisher, F
 	fun main(){
 	    SpringApplication.run(WebClientConsuming::class.java)
 	}
+
+## POST
+Now we are going to post our data, which we got from GET!
