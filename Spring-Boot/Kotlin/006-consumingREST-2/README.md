@@ -85,9 +85,11 @@ Since we are going to GET the flux of Comments, let's call retrieve(). If you ar
 		.retrieve()
 		.bodyToFlux(Comment::class.java)
 
-※ There are advanced alternatives to use awaitExchange{} or exchangeFlow{} (For Java, exchangeToMono() and exchangeToFlux()) instead of retrieve(), for more controls via access to the ClientResponse.
+※ There are advanced alternatives to use awaitExchange{} or exchangeFlow{} (For Java, use exchangeToMono() and exchangeToFlux()) instead of retrieve(), for more controls via access to the ClientResponse.
 
+Once you get it, subscribe it to consume the data from the upstream publisher, Flux. We can print it by putting println() into subscribe().
 
+	commentFlux.subscribe(System.out::println)
 
 (WebClientConsuming.kt)
 
