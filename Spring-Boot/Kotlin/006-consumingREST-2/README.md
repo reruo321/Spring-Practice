@@ -4,10 +4,6 @@ In the previous project we used RestTemplate to consume the web services. If you
 ## Objective
 We will study how to fetch and post web services, using WebClient. Also, we will study many related things!
 
-## Outline
-* Request - http headers, http method, requested url, bean type, http body
-* Response - http status, http headers, http body
-
 ## WebClient
 While RestTemplate is a blocking and synchronous client, **WebClient** is a non-blocking, reactive, and asynchronous web client, supporting HTTP/1.1. It is a part of Spring WebFlux, which provides reactive programming support for web applications.
 
