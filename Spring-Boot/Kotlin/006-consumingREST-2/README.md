@@ -121,4 +121,4 @@ Once you get it, subscribe it to consume the data from the upstream publisher, F
 	}
 
 ## POST
-Now we are going to post our data, which we got from GET!
+Now we are going to post our data using WebClient!
