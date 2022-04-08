@@ -125,3 +125,6 @@ Now we are going to post our data using WebClient! Let's first reuse what we hav
 
 	val client = WebClient.create()
 	client.post()
+                .uri("https://jsonplaceholder.typicode.com/comments")
+                .retrieve()
+                .bodyToFlux(Comment::class.java)
