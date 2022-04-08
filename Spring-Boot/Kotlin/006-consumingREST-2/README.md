@@ -121,4 +121,7 @@ Once you get it, subscribe it to consume the data from the upstream publisher, F
 	}
 
 ## POST
-Now we are going to post our data using WebClient!
+Now we are going to post our data using WebClient! Let's first reuse what we have got from above. We can use WebClient.post() as get().
+
+	val client = WebClient.create()
+	client.post()
