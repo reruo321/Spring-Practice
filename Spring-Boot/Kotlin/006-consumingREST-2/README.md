@@ -165,3 +165,9 @@ Next, create a controller for the service.
 		return commentService.postComments(comment)
 	    }
 	}
+
+To check the result,
+
+	./gradlew bootRun
+	
+And open http://localhost:8080/comments. 
