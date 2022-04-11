@@ -127,4 +127,22 @@ To check the result,
 
 	./gradlew bootRun
 	
-And open http://localhost:8080/comments. 
+And try to open http://localhost:8080/comments. You may get these error messages:
+
+	// console
+	[org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+	// uri
+	There was an unexpected error (type=Method Not Allowed, status=405).
+	Request method 'GET' not supported
+
+The error happens because the server does not support the method sent in the client request. Therefore, we should define a mapping for unsupported methods. Add this to the controller!
+
+	@RequestMapping(value = ["/"], method = [RequestMethod.GET, RequestMethod.POST])
+
+(The solution will look like this.)
+
+	@RestController
+	@RequestMapping(value = ["/"], method = [RequestMethod.GET, RequestMethod.POST])
+	class WebConsumingController {...}
+
+Now I am taking another error, HTTP 400. I will clear this too...
