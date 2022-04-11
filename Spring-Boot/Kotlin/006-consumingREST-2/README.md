@@ -123,49 +123,6 @@ Once you get it, subscribe it to consume the data from the upstream publisher, F
 ## POST
 Now we are going to post our data using WebClient! Let's first reuse what we have got from above. We can use WebClient.post() as get().
 
-	val client = WebClient.create()
-	client.post()
-                .uri("https://jsonplaceholder.typicode.com/comments")
-                .retrieve()
-                .bodyToFlux(Comment::class.java)
-
-We will also check our POST by creating our own RESTful web service. Try to remind the first Hello World project. Let's create a service called *commentService* with GET and POST.
-
-	@Service("commentService")
-	class CommentService{
-	    private val client = WebClient.create()
-	    fun getComments(): Flux<Comment> {
-		return client.get()
-			.uri("https://jsonplaceholder.typicode.com/comments")
-			.retrieve()
-			.bodyToFlux(Comment::class.java)
-	    }
-	    fun postComments(comment: Comment): Flux<Comment> {
-		return client.post()
-			.uri("https://jsonplaceholder.typicode.com/comments")
-			.retrieve()
-			.bodyToFlux(Comment::class.java)
-	    }
-	}
-
-Next, create a controller for the service.
-
-	@RestController
-	class WebConsumingController {
-	    @Autowired
-	    val commentService = CommentService()
-	    @GetMapping("/comments")
-	    @ResponseStatus(HttpStatus.OK)
-	    fun getComments(): Flux<Comment>{
-		return commentService.getComments()
-	    }
-	    @PostMapping("/comments")
-	    @ResponseStatus(HttpStatus.CREATED)
-	    fun postComments(@RequestBody comment: Comment): Flux<Comment>{
-		return commentService.postComments(comment)
-	    }
-	}
-
 To check the result,
 
 	./gradlew bootRun
