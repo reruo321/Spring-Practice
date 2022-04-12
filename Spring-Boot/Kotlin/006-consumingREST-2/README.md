@@ -137,7 +137,7 @@ And try to open http://localhost:8080/post. You may get some error messages belo
 	There was an unexpected error (type=Method Not Allowed, status=405).
 	Request method 'GET' not supported
 
-The error happens because the server does not support the method sent in the client request. Therefore, we should define a mapping for unsupported methods. Add this to the controller!
+The error happens because the server does not support the method sent in the client request. Therefore, we should explicitly define a mapping for unsupported methods. Add this to the controller, and it will support both GET and POST.
 
 	@RequestMapping(value = ["/"], method = [RequestMethod.GET, RequestMethod.POST])
 
@@ -148,3 +148,9 @@ The error happens because the server does not support the method sent in the cli
 	class WebConsumingController {...}
 
 ### HTTP 400
+If you also get a HTTP 400, let's dig in the next exception!
+
+	[org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.util.List<java.lang.String> com.example.demo.WebConsumingController.postComments(com.example.demo.Comment)]
+	
+	There was an unexpected error (type=Bad Request, status=400).
+	Required request body is missing: public java.util.List<java.lang.String>
