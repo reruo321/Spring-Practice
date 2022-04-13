@@ -121,7 +121,7 @@ Once you get it, subscribe it to consume the data from the upstream publisher, F
 	}
 
 ## POST
-Now we are going to post our data using WebClient! Let's first reuse what we have got from above. We can use WebClient.post() as get().
+Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
 
 To check the result,
 
@@ -146,11 +146,3 @@ The error happens because the server does not support the method sent in the cli
 	@RestController
 	@RequestMapping(value = ["/"], method = [RequestMethod.GET, RequestMethod.POST])
 	class WebConsumingController {...}
-
-### HTTP 400
-If you also get a HTTP 400, let's dig in the next exception!
-
-	[org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.util.List<java.lang.String> com.example.demo.WebConsumingController.postComments(com.example.demo.Comment)]
-	
-	There was an unexpected error (type=Bad Request, status=400).
-	Required request body is missing: public java.util.List<java.lang.String>
