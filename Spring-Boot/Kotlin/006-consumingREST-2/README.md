@@ -127,7 +127,9 @@ To check the result,
 
 	./gradlew bootRun
 	
-And try to open http://localhost:8080/post. Use an application such as Postman to send your POST request!
+And try to open http://localhost:8080/post. Use an application such as Postman to easily send your POST request!
+
+![006post](https://user-images.githubusercontent.com/48712088/163443217-58c51513-15ca-43a7-858b-dc58f6fac351.png)
 
 ### HTTP 405
 
