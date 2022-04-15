@@ -131,6 +131,11 @@ And try to open http://localhost:8080/post. Use an application such as Postman t
 
 ![006post](https://user-images.githubusercontent.com/48712088/163443217-58c51513-15ca-43a7-858b-dc58f6fac351.png)
 
+### POST on Web
+And last thing in the project, we will realize the POST result on our website, not only just checking the response! We are going to add a dependency to use ReactiveMongoRepository, the reactive Mongo-specific Repository interface.
+
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.6")
+
 ### HTTP 405
 
 	// console
