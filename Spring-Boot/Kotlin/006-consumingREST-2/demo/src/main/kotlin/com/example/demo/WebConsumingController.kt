@@ -1,20 +1,12 @@
 package com.example.demo
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.web.servlet.FilterRegistrationBean
-import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpStatus
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.filter.HiddenHttpMethodFilter
-import org.springframework.web.reactive.function.client.WebClient
-
 import reactor.core.publisher.Flux
-import java.util.*
+import reactor.core.publisher.Mono
 
 @Configuration
 internal class SecurityConfig : WebSecurityConfigurerAdapter() {
@@ -25,39 +17,22 @@ internal class SecurityConfig : WebSecurityConfigurerAdapter() {
 }
 
 @RestController
-@RequestMapping(value = ["/"], method = [RequestMethod.GET, RequestMethod.POST])
-class WebConsumingController {
-    @Autowired
-    val commentService = CommentService()
-    @GetMapping("/get")
-    @ResponseStatus(HttpStatus.OK)
+//@RequestMapping(value = ["/"], method = [RequestMethod.GET, RequestMethod.POST])
+class WebConsumingController(@Autowired private val commentService: CommentService) {
+    @GetMapping("/comment")
     fun getComments(): Flux<Comment>{
-        return commentService.getComments()
+        return commentService.findAll()
     }
-    @PostMapping("/post")
-    @ResponseStatus(HttpStatus.CREATED)
-    fun postComments(@RequestBody comment: Comment): List<String>?{
-        val commentList = commentService.postComments(comment)
-                                        .collectList()
-                                        .share()
-                                        .block()
-        return commentList?.map { "Post No. ${it.postId} by ${it.name}\n" }
+    @GetMapping("/web")
+    fun getCommentsFromWeb(): Flux<Comment>{
+        return commentService.getCommentsFromWeb()
     }
-}
-
-@Service("commentService")
-class CommentService{
-    private val client = WebClient.create()
-    fun getComments(): Flux<Comment> {
-        return client.get()
-                .uri("https://jsonplaceholder.typicode.com/comments")
-                .retrieve()
-                .bodyToFlux(Comment::class.java)
+    @GetMapping(value = ["/comment/{id}/"])
+    fun getCommentByPostId(@PathVariable("id") id: Int): Mono<Comment>{
+        return commentService.findByPostId(id)
     }
-    fun postComments(comment: Comment): Flux<Comment> {
-        return client.post()
-                .uri("https://jsonplaceholder.typicode.com/comments")
-                .retrieve()
-                .bodyToFlux(Comment::class.java)
+    @PostMapping(value = ["/comment"])
+    fun postComments(@RequestBody comment: Comment): Mono<Comment> {
+        return commentService.saveComment(comment)
     }
 }
