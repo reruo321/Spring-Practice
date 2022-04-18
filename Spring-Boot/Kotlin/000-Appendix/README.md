@@ -27,3 +27,25 @@ If you added some new dependencies but no luck to import them, look at the right
 
 ![000dependency](https://user-images.githubusercontent.com/48712088/159534365-3d41bb4b-9b97-4f3e-a671-77398507e60f.png)
 
+### GradleWrapperMain
+
+    Error: Could not find or load main class org.gradle.wrapper.GradleWrapperMain
+    Caused by: java.lang.ClassNotFoundException: org.gradle.wrapper.GradleWrapperMain
+
+After some modifications on the project directory, you suddenly encounter this error...
+
+Solutions:
+
+1. Check the directory of your Gradle files. It should be like this:
+ 
+        root
+        └ gradle
+            └ wrapper
+                └ gradle.wrapper.jar
+                └ gradle.wrapper.properties
+        └ build.gradle.kts
+        └ gradlew
+        └ gradlew.bat
+        └ settings.gradle.kts
+        
+2. Check the contents of your Gradle files. In my case, all of the files are located correctly. But when I saw the size of **gradle-wrapper.jar**, OOPS! I noticed it was empty. Copy or download a new file to overwrite the corrupted one.
