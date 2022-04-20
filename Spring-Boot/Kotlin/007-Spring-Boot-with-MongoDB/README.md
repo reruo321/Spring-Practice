@@ -9,6 +9,12 @@ The database supports a group of documents called "collection", and not all the 
 
 With Spring Boot, we can build a flexible REST API for MongoDB, allowing ourselves to execute CRUD(Create, Read, Update, Delete)!
 
+## Settings
+### MongoDB
+### Dependencies
+
+
+
 ## POST
 Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
 
