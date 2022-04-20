@@ -1,5 +1,13 @@
 # Spring Boot with MongoDB
-Spring Boot supports connections on various databases, and we will use **MongoDB** in this project.
+Spring Boot supports connections on various databases, and we will learn how to connect MongoDB to the Spring Boot project.
+
+## MongoDB
+**MongoDB** is a NoSQL(Not only SQL) database program, which does not use table to store data, unlike relational DBs.
+Among the various types of NoSQL, it is document database, using document as a record storing information on an object & any of its related metadata.
+Its values can be strings, integers, ...etc., or even objects! Also, the documents can be stored in formats such as JSON, BSON, and XML.
+The database supports a group of documents called "collection", and not all the elements should have the same fields.
+
+With Spring Boot, we can build a flexible REST API for MongoDB, allowing ourselves to execute CRUD(Create, Read, Update, Delete)!
 
 ## POST
 Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
