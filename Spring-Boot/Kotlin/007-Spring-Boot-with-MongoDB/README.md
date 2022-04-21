@@ -11,6 +11,10 @@ With Spring Boot, we can build a flexible REST API for MongoDB, allowing ourselv
 
 ## Settings
 ### MongoDB
+If you are the first time to try MongoDB, go to [the website](https://www.mongodb.com/) to register your organization. (allowing individual)
+Once you log in, create a new project, and a new cluster in it. Cluster in MongoDB usually means either a "sharded cluster" or a "replica set".
+It prevents the fatal data loss when the only main server fails. It is also good for extra read operations capacity and data locality.
+
 ### Dependencies
 
 
