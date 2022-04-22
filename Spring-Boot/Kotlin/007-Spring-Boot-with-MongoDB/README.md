@@ -15,8 +15,12 @@ If you are the first time to try MongoDB, go to [the website](https://www.mongod
 Once you log in, create a new project, and a new cluster in it. Cluster in MongoDB usually means either a "sharded cluster" or a "replica set".
 It prevents the fatal data loss when the only main server fails. It is also good for extra read operations capacity and data locality.
 
-### Dependencies
+![007mongo](https://user-images.githubusercontent.com/48712088/164534251-6e0d5887-213e-4eeb-a62f-dc40e643ac9b.png)
 
+When you succeed in creating a cluster, click "Connect" and select "Connect your application" so that you get the connection string.
+Copy and paste it into src/main/resources/application.properties. Do not forget to add your password!
+
+### Dependencies
 
 
 ## POST
