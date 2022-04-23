@@ -18,10 +18,21 @@ It prevents the fatal data loss when the only main server fails. It is also good
 ![007mongo](https://user-images.githubusercontent.com/48712088/164534251-6e0d5887-213e-4eeb-a62f-dc40e643ac9b.png)
 
 When you succeed in creating a cluster, click "Connect" and select "Connect your application" so that you get the connection string.
-Copy and paste it into src/main/resources/application.properties. Do not forget to add your password!
+Copy and paste it into src/main/resources/application.properties. Do not forget to add your own password!
 
 ### Dependencies
+Add some additional dependencies to use MongoDB and Spring Security. The latter framework dependency will be optional, but note that my project tried this one too.
 
+    dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:2.6.6")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.6")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    }
 
 ## POST
 Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
