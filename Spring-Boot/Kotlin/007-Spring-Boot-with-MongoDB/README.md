@@ -9,6 +9,8 @@ The database supports a group of documents called "collection", and not all the 
 
 With Spring Boot, we can build a flexible REST API for MongoDB, allowing ourselves to execute CRUD(Create, Read, Update, Delete)!
 
+## Outline
+
 ## Settings
 ### MongoDB
 If you are the first time to try MongoDB, go to [the website](https://www.mongodb.com/) to register your organization. (allowing individual)
@@ -23,6 +25,11 @@ Copy and paste it into src/main/resources/application.properties. Do not forget 
 ### Dependencies
 Add some additional dependencies to use MongoDB and Spring Security. The latter framework dependency will be optional, but note that my project tried this one too.
 
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.6")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+
+This is the full list of mine:
+
     dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -33,6 +40,8 @@ Add some additional dependencies to use MongoDB and Spring Security. The latter 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
+
+
 
 ## POST
 Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
