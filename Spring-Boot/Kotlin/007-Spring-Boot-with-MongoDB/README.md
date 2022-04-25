@@ -10,6 +10,7 @@ The database supports a group of documents called "collection", and not all the 
 With Spring Boot, we can build a flexible REST API for MongoDB, allowing ourselves to execute CRUD(Create, Read, Update, Delete)!
 
 ## Outline
+![](../../../../../OneDrive/문서/공부/SpringBoot_Kotlin/007structure.png)
 
 ## Settings
 ### MongoDB
