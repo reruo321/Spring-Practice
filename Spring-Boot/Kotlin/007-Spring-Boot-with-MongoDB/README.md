@@ -10,7 +10,7 @@ The database supports a group of documents called "collection", and not all the 
 With Spring Boot, we can build a flexible REST API for MongoDB, allowing ourselves to execute CRUD(Create, Read, Update, Delete)!
 
 ## Outline
-![](../../../../../OneDrive/문서/공부/SpringBoot_Kotlin/007structure.png)
+![007structure](https://user-images.githubusercontent.com/48712088/165133252-391572fd-bd34-4bef-8d9d-9af380bd120e.png)
 
 ## Settings
 ### MongoDB
@@ -22,6 +22,19 @@ It prevents the fatal data loss when the only main server fails. It is also good
 
 When you succeed in creating a cluster, click "Connect" and select "Connect your application" so that you get the connection string.
 Copy and paste it into src/main/resources/application.properties. Do not forget to add your own password!
+
+(src/main/resources/application.properties) Change the uri and database name to yours.
+Even if there is no database with specified name in the cluster, it will be automatically created.
+
+    spring.data.mongodb.uri=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/myDatabase
+    spring.data.mongodb.database=myDatabase
+
+If your setting is wrong, you will get these exceptions...
+
+    No server chosen by com.mongodb.reactivestreams.client.internal.ClientSessionHelper...
+    exception={com.mongodb.MongoSocketOpenException: Exception opening socket}...
+    java.net.ConnectException: Connection refused: no further information...
+    There was an unexpected error (type=Service Unavailable, status=503).
 
 ### Dependencies
 Add some additional dependencies to use MongoDB and Spring Security. The latter framework dependency will be optional, but note that my project tried this one too.

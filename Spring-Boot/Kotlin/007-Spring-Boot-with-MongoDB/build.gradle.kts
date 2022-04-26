@@ -18,10 +18,10 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-webflux:2.6.6")
+	implementation("org.springframework.boot:spring-boot-starter-webflux:2.6.7")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
 	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.6")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.7")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
