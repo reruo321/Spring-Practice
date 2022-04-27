@@ -2,7 +2,7 @@ package com.example.demo
 
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document("comment")
+@Document("comments")
 data class Comment(val postId: Int,
                    var id: Int,
                    val name: String,

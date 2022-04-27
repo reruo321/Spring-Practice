@@ -7,6 +7,6 @@ import reactor.core.publisher.Flux
 
 @Repository
 interface CommentRepository: ReactiveMongoRepository<Comment, Int> {
-    @Query("{id:'?0'}")
+    @Query("{'id': ?0}")
     fun findByUserId(id: String): Flux<Comment>
 }
