@@ -32,6 +32,6 @@ class WebConsumingController(@Autowired private val commentService: CommentServi
     }
     @PostMapping(value = ["/comment"])
     fun postComments(@RequestBody comment: Comment): Mono<Comment> {
-        return commentService.saveComment(comment)
+        return commentService.createComment(comment)
     }
 }

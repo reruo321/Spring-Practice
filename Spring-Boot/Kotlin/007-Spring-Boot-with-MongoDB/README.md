@@ -93,6 +93,28 @@ will be
 
 in a SQL query.
 
+#### Services
+You might feel somewhat messy to the services, so declare them into a class.
+
+    @Service("commentService")
+    class CommentService(@Autowired private val commentRepository: CommentRepository){...}
+
+CRUD operations can become a part of the application services. For example, a READ method findAll() will be
+
+    fun findAll(): Flux<Comment>{
+        return commentRepository.findAll()
+    }
+
+#### Controller
+Since we are going to use the MVC, we should additionally implement a controller and a view.
+
+
+
+#### Main Class
+    @SpringBootApplication
+    @EnableMongoRepositories
+    class WebClientConsuming{...}
+
 ## POST
 Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
 

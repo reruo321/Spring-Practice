@@ -24,7 +24,7 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
         return commentRepository.findById(id)
                 .switchIfEmpty(Mono.error(NotFoundException()))
     }
-    fun saveComment(comment: Comment): Mono<Comment>{
+    fun createComment(comment: Comment): Mono<Comment>{
         return commentRepository.save(comment)
     }
 }
