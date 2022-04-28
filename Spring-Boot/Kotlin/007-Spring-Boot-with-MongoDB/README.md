@@ -67,6 +67,11 @@ The model in our project is the POJO, the Comment class.
     @Document("comments")
     data class Comment(...){...}
 
+Also, add an annotation **@Id** to specify the primary key __id of the document, or MongoDB will automatically generate the field.
+
+    @Id
+    private val postId: Int
+
 #### Spring Boot MongoDB API
 There is an API to easily connect the model and the DB, and to use methods for CRUD operations.
 Its implementation is done in a repository, so we will create this one.

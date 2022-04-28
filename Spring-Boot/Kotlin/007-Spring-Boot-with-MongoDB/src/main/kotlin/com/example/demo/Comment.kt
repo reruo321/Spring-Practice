@@ -1,13 +1,15 @@
 package com.example.demo
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document("comments")
-data class Comment(val postId: Int,
-                   var id: Int,
-                   val name: String,
-                   val email: String,
-                   val body: String)
+data class Comment( @Id
+                   private val postId: Int,
+                   private var id: Int,
+                   private val name: String,
+                   private val email: String,
+                   private val body: String)
 {
     override fun toString(): String {
         return "[Post No. $postId] - ID. $id\n\"$body\"\n- $name ($email)"
