@@ -52,13 +52,6 @@ Even if there is no database with the specified name in the cluster, it will be 
 
 Oh, here is a nice [official MongoDB guide](https://www.mongodb.com/compatibility/spring-boot) to start it with Spring Boot, so let's follow that step by step!
 
-If anything in your setting is wrong, you will get these exceptions...
-
-    No server chosen by com.mongodb.reactivestreams.client.internal.ClientSessionHelper...
-    exception={com.mongodb.MongoSocketOpenException: Exception opening socket}...
-    java.net.ConnectException: Connection refused: no further information...
-    There was an unexpected error (type=Service Unavailable, status=503).
-
 #### @Document
 While a **document** in MongoDB acts as a record in RDB, **collection** does as a table. 
 An annotation **@Document** will set the collection name, being used by a model.
@@ -106,32 +99,58 @@ CRUD operations can become a part of the application services. For example, a RE
     }
 
 #### Controller
-Since we are going to use the MVC, we should additionally implement a controller and a view.
+Since we are going to use the MVC, we should additionally implement a controller and a view. This enables us to see the operations on the web. Otherwise, we should check them using the command line interface, *CommandLineRunner*, as the tutorial does.
 
+Let the repository **@Autowired** into the controller, so that the controller can interact with it.
 
+    @RestController
+    class WebConsumingController(@Autowired private val commentService: CommentService) {...}
+
+To make a view of all comments in the repository, try this. It will allow us to READ them via the web.
+
+    @GetMapping("/comment")
+    fun getComments(): Flux<Comment>{
+        return commentService.findAll()
+    }
 
 #### Main Class
+Do not forget an annotation, **@EnableMongoRepositories**!
+
     @SpringBootApplication
     @EnableMongoRepositories
     class WebClientConsuming{...}
 
-## POST
-Now we are going to post our data using WebClient! Let's post three new comments, using WebClient.post().
-
-To check the result,
+## CRUD
+After programming, we are going to run the application! First, make sure the MongoDB cluster is connected. On the terminal,
 
 	./gradlew bootRun
 
-And try to open http://localhost:8080/post. Use an application such as Postman to easily send your POST request! Do not forget to send your request in JSON type.
+Open http://localhost:8080/web, and see if the contents from https://jsonplaceholder.typicode.com/comments exist. Note that this one is from the previous project, just to check the connection.
+
+Even if you access to http://localhost:8080/comment, you will see nothing other than a pair of [ ]. This is because our database does not have any data to show yet.
+From now on, start our main dish, CRUD!
+
+### CREATE
+Let's **CREATE** our document!
+
+Use an application such as Postman to easily send your POST request! Do not forget to send your request in JSON type.
 
 ![006post](https://user-images.githubusercontent.com/48712088/163443217-58c51513-15ca-43a7-858b-dc58f6fac351.png)
 
 If you get the response in form you set from your application, it means your communication was right.
 
-### 
-e will realize the POST result on our website, not only just checking the response! We are going to add a dependency to use ReactiveMongoRepository, the reactive Mongo-specific Repository interface.
+## Exceptions
+### MongoSocketOpenException
+If anything in your setting is wrong, you will get these exceptions...
 
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.6")
+    No server chosen by com.mongodb.reactivestreams.client.internal.ClientSessionHelper...
+    exception={com.mongodb.MongoSocketOpenException: Exception opening socket}...
+    java.net.ConnectException: Connection refused: no further information...
+    There was an unexpected error (type=Service Unavailable, status=503).
+
+Have a look at some solutions below.
+
+1. Is your MongoDB cluster connected correctly? Check application.properties setting once again.
 
 ### HTTP 405
 
