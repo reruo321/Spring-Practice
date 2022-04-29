@@ -87,7 +87,7 @@ will be
 in a SQL query.
 
 #### Services
-You might feel somewhat messy to the services, so declare them into a class.
+You might feel somewhat messy to the codes of services, so declare them into a class.
 
     @Service("commentService")
     class CommentService(@Autowired private val commentRepository: CommentRepository){...}
@@ -127,8 +127,8 @@ After programming, we are going to run the application! First, make sure the Mon
 
 Open http://localhost:8080/web, and see if the contents from https://jsonplaceholder.typicode.com/comments exist. Note that this one is from the previous project, just to check the connection.
 
-Even if you access to http://localhost:8080/comment, you will see nothing other than a pair of [ ]. This is because our database does not have any data to show yet.
-From now on, start our main dish, CRUD!
+After checking, open http://localhost:8080/comment. Right now, you will see nothing other than a pair of [ ]. This is because our database does not have any data to show yet.
+Stay tuned, and start our main dish, CRUD!
 
 ### CREATE
 Let's **CREATE** our document!
@@ -137,7 +137,21 @@ Use an application such as Postman to easily send your POST request! Do not forg
 
 ![006post](https://user-images.githubusercontent.com/48712088/163443217-58c51513-15ca-43a7-858b-dc58f6fac351.png)
 
-If you get the response in form you set from your application, it means your communication was right.
+1. Select POST, and give http://localhost:8080/comment as a request URL.
+2. Select Body, raw, and JSON.
+3. Write your JSON to POST and click Send.
+
+If you successfully sent it, have a look at the web with READ operation. It will show the new document by your CREATE.
+
+### READ
+**READ** operation literally READs the data from the database.
+
+Oh, what is the problem when MongoDB says my data exists well, but does not show on the web?
+If your READ looks like
+
+    [{}, {}]
+
+it will not be your or your application's fault, but actually the data is hidden. Private fields in the document (POJO) will make the view of them private, too.
 
 ## Exceptions
 ### MongoSocketOpenException
@@ -150,7 +164,7 @@ If anything in your setting is wrong, you will get these exceptions...
 
 Have a look at some solutions below.
 
-1. Is your MongoDB cluster connected correctly? Check application.properties setting once again.
+1. Is your MongoDB cluster connected correctly? Check the application.properties setting once again.
 
 ### HTTP 405
 
