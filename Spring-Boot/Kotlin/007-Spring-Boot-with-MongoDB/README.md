@@ -153,6 +153,8 @@ If your READ looks like
 
 it will not be your or your application's fault, but actually the data is hidden. Private fields in the document (POJO) will make the view of them private, too.
 
+### Partial READ
+
 ## Exceptions
 ### MongoSocketOpenException
 If anything in your setting is wrong, you will get these exceptions...

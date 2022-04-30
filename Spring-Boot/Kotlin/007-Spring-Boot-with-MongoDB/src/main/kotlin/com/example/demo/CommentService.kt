@@ -20,8 +20,8 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
     fun findAll(): Flux<Comment>{
         return commentRepository.findAll()
     }
-    fun findByPostId(id: Int): Mono<Comment>{
-        return commentRepository.findById(id)
+    fun findByPostId(postId: Int): Mono<Comment>{
+        return commentRepository.findById(postId)
                 .switchIfEmpty(Mono.error(NotFoundException()))
     }
     fun createComment(comment: Comment): Mono<Comment>{

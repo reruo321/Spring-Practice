@@ -26,9 +26,9 @@ class WebConsumingController(@Autowired private val commentService: CommentServi
     fun getCommentsFromWeb(): Flux<Comment>{
         return commentService.getCommentsFromWeb()
     }
-    @GetMapping(value = ["/comment/{id}/"])
-    fun getCommentByPostId(@PathVariable("id") id: Int): Mono<Comment>{
-        return commentService.findByPostId(id)
+    @GetMapping(value = ["/comment/{postId}"])
+    fun getCommentByPostId(@PathVariable("postId") postId: Int): Mono<Comment>{
+        return commentService.findByPostId(postId)
     }
     @PostMapping(value = ["/comment"])
     fun postComments(@RequestBody comment: Comment): Mono<Comment> {
