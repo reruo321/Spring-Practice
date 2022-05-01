@@ -34,7 +34,7 @@ This is the full list of mine:
 
 
 ### MongoDB
-If you are the first time to try MongoDB, go to [the website](https://www.mongodb.com/) to register your organization. (allowing individual)
+If you are the first time to try MongoDB, go to [the website](https://www.mongodb.com/) to register your organization. (Individual user is of course OK.)
 Once you log in, create a new project, and a new cluster in it. Cluster in MongoDB usually means either a "sharded cluster" or a "replica set".
 It prevents the fatal data loss when the only main server fails. It is also good for extra read operations capacity and data locality.
 
@@ -106,7 +106,8 @@ Let the repository **@Autowired** into the controller, so that the controller ca
     @RestController
     class WebConsumingController(@Autowired private val commentService: CommentService) {...}
 
-To make a view of all comments in the repository, try this. It will allow us to READ them via the web.
+#### View
+For instance to make a view of all comments in the repository, try this. It will allow us to READ them via the web.
 
     @GetMapping("/comment")
     fun getComments(): Flux<Comment>{
@@ -141,7 +142,7 @@ Use an application such as Postman to easily send your POST request! Do not forg
 2. Select Body, raw, and JSON.
 3. Write your JSON to POST and click Send.
 
-If you successfully sent it, have a look at the web with READ operation. It will show the new document by your CREATE.
+If you successfully sent it, have a look at the web with READ operation. It will POST the new CREATEd comment.
 
 ### READ
 **READ** operation literally READs the data from the database.
@@ -168,12 +169,14 @@ You can also READ specific data in the database! For example, to make a comment 
         .switchIfEmpty(Mono.error(NotFoundException()))
     }
 
+We can also query documents and READ them by typing their own mapped URL!
+
 you can set *postId* as the path variable of http://localhost:8080/comment/#POST_ID# while using @GetMapping,
 so that changing #POST_ID# part shows a READ result with your *postId* input.
 For example, if you access to http://localhost:8080/comment/12345, you will see a comment whose *postId* is 12345.
 
-Note that since the @Id-annotated *postId* field is mapped to the _id field,
-the function findByPostId can simply get the comment by calling commentRepository.**findById()**.
+Especially for _id, the interface **ReactiveCrudRepository** provides a useful method **findById()**, no need to implement our custom query.
+Since we marked *postId* with @Id, we can easily define a READ service querying *postId*, by calling commentRepository.findById().
 
 ## Exceptions
 ### MongoSocketOpenException
