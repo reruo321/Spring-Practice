@@ -180,7 +180,7 @@ Since we marked *postId* with @Id, we can easily define a READ service querying 
 
 ## Exceptions
 ### MongoSocketOpenException
-If anything in your setting is wrong, you will get these exceptions...
+If anything in your connection is wrong, you will get these exceptions...
 
     No server chosen by com.mongodb.reactivestreams.client.internal.ClientSessionHelper...
     exception={com.mongodb.MongoSocketOpenException: Exception opening socket}...
@@ -189,7 +189,7 @@ If anything in your setting is wrong, you will get these exceptions...
 
 Have a look at some solutions below.
 
-1. Is your MongoDB cluster connected correctly? Check the application.properties setting once again.
+1. Is your MongoDB cluster connected correctly? Check the status of the cluster from MongoDB Atlas. Also, check the application.properties setting once again.
 
 ### HTTP 405
 

@@ -24,6 +24,10 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
         return commentRepository.findById(postId)
                 .switchIfEmpty(Mono.error(NotFoundException()))
     }
+    fun findByUserName(name: String): Flux<Comment>{
+        return commentRepository.findByUserName(name)
+                .switchIfEmpty(Flux.error(NotFoundException()))
+    }
     fun createComment(comment: Comment): Mono<Comment>{
         return commentRepository.save(comment)
     }
