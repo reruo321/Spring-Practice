@@ -9,7 +9,7 @@ data class Comment( @Id
                    private val id: Int,
                    val name: String,
                    private val email: String,
-                   val body: String)
+                   var body: String)
 {
     override fun toString(): String {
         return "[Post No. $postId] - ID. $id\n\"$body\"\n- $name ($email)"

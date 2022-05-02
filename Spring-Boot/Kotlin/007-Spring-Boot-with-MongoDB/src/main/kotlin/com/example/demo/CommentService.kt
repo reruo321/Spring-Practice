@@ -10,7 +10,11 @@ import reactor.core.publisher.Mono
 @Service("commentService")
 class CommentService(@Autowired private val commentRepository: CommentRepository){
     private val client = WebClient.create()
-
+    // CREATE
+    fun createComment(comment: Comment): Mono<Comment>{
+        return commentRepository.save(comment)
+    }
+    // READ
     fun getCommentsFromWeb(): Flux<Comment> {
         return client.get()
                 .uri("https://jsonplaceholder.typicode.com/comments")
@@ -28,7 +32,8 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
         return commentRepository.findByUserName(name)
                 .switchIfEmpty(Flux.error(NotFoundException()))
     }
-    fun createComment(comment: Comment): Mono<Comment>{
-        return commentRepository.save(comment)
+    // UPDATE
+    fun updateCommentBody(postId: Int, newBody: String){
     }
+    // DELETE
 }
