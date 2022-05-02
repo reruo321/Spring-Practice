@@ -38,4 +38,10 @@ class WebConsumingController(@Autowired private val commentService: CommentServi
     fun postComments(@RequestBody comment: Comment): Mono<Comment> {
         return commentService.createComment(comment)
     }
+    /*
+    @PutMapping(value = ["/comment/update/{postId}"])
+    fun changeCommentBody(@RequestBody replaceComment: Comment, @PathVariable("postId") postId: Int){
+        return commentService.updateCommentBody(replaceComment.body, postId)
+    }
+     */
 }

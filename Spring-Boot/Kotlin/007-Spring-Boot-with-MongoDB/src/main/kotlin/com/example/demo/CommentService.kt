@@ -1,11 +1,13 @@
 package com.example.demo
 
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import java.util.logging.Logger
 
 @Service("commentService")
 class CommentService(@Autowired private val commentRepository: CommentRepository){
@@ -33,7 +35,12 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
                 .switchIfEmpty(Flux.error(NotFoundException()))
     }
     // UPDATE
-    fun updateCommentBody(postId: Int, newBody: String){
+    fun updateCommentBody(newBody: String, postId: Int) {
+        commentRepository.findById(postId)
+                .switchIfEmpty(Mono.error(NotFoundException()))
+                .map { it.body = newBody
+                    commentRepository.save(it)
+                }
     }
     // DELETE
 }
