@@ -35,11 +35,13 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
                 .switchIfEmpty(Flux.error(NotFoundException()))
     }
     // UPDATE
-    fun updateCommentBody(newBody: String, postId: Int) {
-        commentRepository.findById(postId)
-                .switchIfEmpty(Mono.error(NotFoundException()))
-                .map { it.body = newBody
+    fun updateComment(newComment: Comment, postId: Int): Mono<Comment>{
+        println("\n***********\n\nupdate 1\n\n***********\n")
+        return findByPostId(postId)
+                .map {
+                    it.body = newComment.body
                     commentRepository.save(it)
+                    it
                 }
     }
     // DELETE
