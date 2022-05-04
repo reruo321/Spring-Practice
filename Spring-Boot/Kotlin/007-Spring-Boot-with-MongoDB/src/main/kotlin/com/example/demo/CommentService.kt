@@ -3,6 +3,7 @@ package com.example.demo
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
+import org.springframework.data.mongodb.core.MongoOperations
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
@@ -36,13 +37,7 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
     }
     // UPDATE
     fun updateComment(newComment: Comment, postId: Int): Mono<Comment>{
-        println("\n***********\n\nupdate 1\n\n***********\n")
-        return findByPostId(postId)
-                .map {
-                    it.body = newComment.body
-                    commentRepository.save(it)
-                    it
-                }
+        return commentRepository.save(newComment)
     }
     // DELETE
 }
