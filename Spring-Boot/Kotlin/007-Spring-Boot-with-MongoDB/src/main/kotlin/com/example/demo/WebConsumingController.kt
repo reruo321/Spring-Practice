@@ -42,4 +42,12 @@ class WebConsumingController(@Autowired private val commentService: CommentServi
     fun updateComment(@RequestBody newComment: Comment, @PathVariable("postId") postId: Int): Mono<Comment>{
         return commentService.updateComment(newComment, postId)
     }
+    @DeleteMapping(value = ["/comment/delete/{postId}"])
+    fun deleteComment(@PathVariable("postId") postId: Int): String{
+        return commentService.deleteComment(postId)
+    }
+    @DeleteMapping(value = ["/comment/delete/user/{name}"])
+    fun deleteCommentByUserName(@PathVariable("name") name: String): String{
+        return commentService.deleteCommentsByUserName(name)
+    }
 }

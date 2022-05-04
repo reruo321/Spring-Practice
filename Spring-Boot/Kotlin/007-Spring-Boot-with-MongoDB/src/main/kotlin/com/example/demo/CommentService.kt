@@ -40,4 +40,13 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
         return commentRepository.save(newComment)
     }
     // DELETE
+    fun deleteComment(postId: Int): String{
+        commentRepository.deleteById(postId)
+                .switchIfEmpty(Mono.error(NotFoundException()))
+        return "Deleted No. $postId Post"
+    }
+    fun deleteCommentsByUserName(name: String): String{
+        commentRepository.deleteByUserName(name)
+        return "Deleted $name's Posts"
+    }
 }
