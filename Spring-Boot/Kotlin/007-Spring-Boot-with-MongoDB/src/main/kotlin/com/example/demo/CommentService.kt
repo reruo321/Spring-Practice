@@ -4,6 +4,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.mongodb.core.MongoOperations
+import org.springframework.data.mongodb.core.query.Criteria
+import org.springframework.data.mongodb.core.query.Query
+import org.springframework.data.mongodb.core.query.isEqualTo
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
@@ -46,7 +49,7 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
         return "Deleted No. $postId Post"
     }
     fun deleteCommentsByUserName(name: String): String{
-        commentRepository.deleteByUserName(name)
+        commentRepository.deleteQueryByUserName(name).subscribe()
         return "Deleted $name's Posts"
     }
 }

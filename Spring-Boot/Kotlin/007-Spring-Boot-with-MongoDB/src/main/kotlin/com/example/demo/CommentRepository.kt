@@ -10,6 +10,6 @@ import reactor.core.publisher.Flux
 interface CommentRepository: ReactiveMongoRepository<Comment, Int> {
     @Query("{'name': ?0}")
     fun findByUserName(id: String): Flux<Comment>
-    @Query(value="{'name': ?0}", delete = true)
-    fun deleteByUserName(name: String)
+    @DeleteQuery("{'name': ?0}")
+    fun deleteQueryByUserName(name: String): Flux<Comment>
 }
