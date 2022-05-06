@@ -42,6 +42,13 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
     fun updateComment(newComment: Comment, postId: Int): Mono<Comment>{
         return commentRepository.save(newComment)
     }
+    fun updateCommentOnlyBody(newBody: String, postId: Int): String{
+        findByPostId(postId).map{
+            it.body = newBody
+            commentRepository.save(it).subscribe()
+        }.subscribe()
+        return "Post No. $postId is updated: \"$newBody\""
+    }
     // DELETE
     fun deleteComment(postId: Int): String{
         commentRepository.deleteById(postId)
