@@ -52,6 +52,10 @@ Even if there is no database with the specified name in the cluster, it will be 
 
 Oh, here is a nice [official MongoDB guide](https://www.mongodb.com/compatibility/spring-boot) to start it with Spring Boot, so let's follow that step by step!
 
+### Publish/Subscribe Pattern
+I used ReactiveMongoRepository, the reactive version of MongoRepository in my project. If your project contains reactive repository too,
+you should be careful on the **Publish/Subscribe Pattern** while programming.
+
 #### @Document
 While a **document** in MongoDB acts as a record in RDB, **collection** does as a table. 
 An annotation **@Document** will set the collection name, being used by a model.
