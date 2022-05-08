@@ -122,8 +122,17 @@ Do not forget an annotation, **@EnableMongoRepositories**!
     class WebClientConsuming{...}
 
 ## Publish/Subscribe Pattern
-I used ReactiveMongoRepository, the reactive version of MongoRepository in my project. If your project contains reactive repository too,
-you should be careful on the **Publish/Subscribe Pattern** while programming.
+I used ReactiveMongoRepository, the reactive version of MongoRepository, in my project. If your project contains a reactive repository too,
+you should be careful on the publish-subscribe pattern while programming.
+
+**Publish-Subscribe**(Pub-Sub) is a messaging pattern allowing its messages to be broadcast asynchronously
+to different parts of a system. A *publisher* broadcasts a message by pushing it to a *topic*.
+Message topics transfer and push instantly the messages out to all *subscribers*.
+The subscribers of a topic will receive every broadcast message, except filtered one by the user's custom policies for them.
+The publishers do not need to know about the usage of the message, and the subscribers does not need to know about the publishers.
+
+In this pattern, it is possible to create event-driven services, without message queue querying for messages.
+It also allows developers to create different independent functions being performed in parallel, using the same message.
 
 ## CRUD
 After programming, we are going to run the application! First, make sure the MongoDB cluster is connected. On the terminal,
