@@ -121,7 +121,7 @@ Do not forget an annotation, **@EnableMongoRepositories**!
     @EnableMongoRepositories
     class WebClientConsuming{...}
 
-## Publish/Subscribe Pattern
+## Publish-Subscribe Pattern
 I used ReactiveMongoRepository, the reactive version of MongoRepository, in my project. If your project contains a reactive repository too,
 you should be careful on the publish-subscribe pattern while programming.
 
@@ -133,6 +133,9 @@ The publishers do not need to know about the usage of the message, and the subsc
 
 In this pattern, it is possible to create event-driven services, without message queue querying for messages.
 It also allows developers to create different independent functions being performed in parallel, using the same message.
+
+### Tips for Reactive Programming
+1. Avoid blocking.
 
 ## CRUD
 After programming, we are going to run the application! First, make sure the MongoDB cluster is connected. On the terminal,
