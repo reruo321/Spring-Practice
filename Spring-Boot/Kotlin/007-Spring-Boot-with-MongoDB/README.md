@@ -139,6 +139,8 @@ It also allows developers to create different independent functions being perfor
 If you block the Webflux starting with a very few threads, it will bring a high risk of thread starvation.
 No new threads spawn in your reactive applications, and their small thread pool will be blocked until they receive response from the database.
 
+Wrapping a blocking call at least prevents those worst situations, but will lose a lot of benefits of reactive streams anyway...
+
 ## CRUD
 After programming, we are going to run the application! First, make sure the MongoDB cluster is connected. On the terminal,
 
