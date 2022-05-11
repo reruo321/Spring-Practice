@@ -173,11 +173,11 @@ If your READ looks like
 
 it will not be your or your application's fault, but actually the data is hidden. Private fields in the document (POJO) will make the view of them private, too.
 
-### Partial READ
+#### Partial READ
 You can also READ specific data in the database! For example, to make a comment with the postId value you put into the URL come out,
 
     // WebConsumingController.kt
-    @GetMapping(value = ["/comment/{postId}"])
+    @GetMapping(value = ["/comment/post/{postId}"])
     fun getCommentByPostId(@PathVariable("postId") postId: Int): Mono<Comment>{
         return commentService.findByPostId(postId)
     }
@@ -190,12 +190,16 @@ You can also READ specific data in the database! For example, to make a comment 
 
 We can also query documents and READ them by typing their own mapped URL!
 
-you can set *postId* as the path variable of http://localhost:8080/comment/#POST_ID# while using @GetMapping,
+you can set *postId* as the path variable of http://localhost:8080/comment/post/#POST_ID# while using @GetMapping,
 so that changing #POST_ID# part shows a READ result with your *postId* input.
-For example, if you access to http://localhost:8080/comment/12345, you will see a comment whose *postId* is 12345.
+For example, if you access to http://localhost:8080/comment/post/12345, you will see a comment whose *postId* is 12345.
 
 Especially for _id, the interface **ReactiveCrudRepository** provides a useful method **findById()**, no need to implement our custom query.
 Since we marked *postId* with @Id, we can easily define a READ service querying *postId*, by calling commentRepository.findById().
+
+### Update
+By using ReactiveCrudRepository.save(), we can either update a document, or create a new one if the entity's ID is not in the database.
+
 
 ## Exceptions
 ### MongoSocketOpenException
