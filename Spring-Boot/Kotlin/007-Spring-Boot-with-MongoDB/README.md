@@ -200,6 +200,21 @@ Since we marked *postId* with @Id, we can easily define a READ service querying 
 ### Update
 By using ReactiveCrudRepository.save(), we can either update a document, or create a new one if the entity's ID is not in the database.
 
+    fun updateComment(newComment: Comment, postId: Int): Mono<Comment>{
+    return commentRepository.save(newComment)
+    }
+
+Note that when trying to do a partial update in the reactive repository,
+make sure that the code also contains *Subscription*, not just *Assembly* which only has description.
+Nothing happens until you subscribe.
+
+    fun updateCommentOnlyBody(newBody: String, postId: Int): String{
+    findByPostId(postId).map{
+    it.body = newBody
+    commentRepository.save(it).subscribe()
+    }.subscribe()
+    return "Post No. $postId is updated: \"$newBody\""
+    }
 
 ## Exceptions
 ### MongoSocketOpenException
