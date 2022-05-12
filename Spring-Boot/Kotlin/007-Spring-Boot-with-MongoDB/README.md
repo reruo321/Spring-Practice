@@ -217,7 +217,8 @@ Nothing happens until you subscribe. Let's see my example.
         return "Post No. $postId is updated: \"$newBody\""
     }
 
-
+In this function, findByPostId(postId).flatMap{...} acts as a recipe to change the part (body) of specific entity and then update it.
+However, it does not execute the publisher. This is why subscribe() needs to be there.
 
 ## Exceptions
 ### MongoSocketOpenException
