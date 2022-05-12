@@ -121,7 +121,8 @@ Do not forget an annotation, **@EnableMongoRepositories**!
     @EnableMongoRepositories
     class WebClientConsuming{...}
 
-## Publish-Subscribe Pattern
+## Programming with Reactive Repository
+### Publish-Subscribe Pattern
 I used ReactiveMongoRepository, the reactive version of MongoRepository, in my project. If your project contains a reactive repository too,
 you should be careful on the publish-subscribe pattern while programming.
 
@@ -134,7 +135,7 @@ The publishers do not need to know about the usage of the message, and the subsc
 In this pattern, it is possible to create event-driven services, without message queue querying for messages.
 It also allows developers to create different independent functions being performed in parallel, using the same message.
 
-## Blocking in Reactive Programming
+### Blocking
 If you block the Webflux starting with a very few threads, it will bring a high risk of thread starvation.
 No new threads spawn in your reactive applications, and their small thread pool will be blocked until they receive response from the database.
 
