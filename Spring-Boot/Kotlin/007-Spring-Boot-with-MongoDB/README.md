@@ -207,15 +207,17 @@ By using ReactiveCrudRepository.save(), we can either update a document, or crea
 
 Note that when trying to do a partial update in the reactive repository,
 make sure that the code also contains *Subscription*, not just *Assembly* which only has description.
-Nothing happens until you subscribe.
+Nothing happens until you subscribe. Let's see my example.
 
     fun updateCommentOnlyBody(newBody: String, postId: Int): String{
-    findByPostId(postId).map{
-    it.body = newBody
-    commentRepository.save(it).subscribe()
-    }.subscribe()
-    return "Post No. $postId is updated: \"$newBody\""
+        findByPostId(postId).flatMap{
+            it.body = newBody
+            commentRepository.save(it)
+        }.subscribe()
+        return "Post No. $postId is updated: \"$newBody\""
     }
+
+
 
 ## Exceptions
 ### MongoSocketOpenException

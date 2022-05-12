@@ -43,9 +43,9 @@ class CommentService(@Autowired private val commentRepository: CommentRepository
         return commentRepository.save(newComment)
     }
     fun updateCommentOnlyBody(newBody: String, postId: Int): String{
-        findByPostId(postId).map{
+        findByPostId(postId).flatMap{
             it.body = newBody
-            commentRepository.save(it).subscribe()
+            commentRepository.save(it)
         }.subscribe()
         return "Post No. $postId is updated: \"$newBody\""
     }
