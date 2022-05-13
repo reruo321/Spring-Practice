@@ -199,7 +199,7 @@ Especially for _id, the interface **ReactiveCrudRepository** provides a useful m
 Since we marked *postId* with @Id, we can easily define a READ service querying *postId*, by calling commentRepository.findById().
 
 ### Update
-By using ReactiveCrudRepository.save(), we can either update a document, or create a new one if the entity's ID is not in the database.
+By using ReactiveCrudRepository.save(), we can either UPDATE a document, or create a new one if the entity's ID is not in the database.
 
     fun updateComment(newComment: Comment, postId: Int): Mono<Comment>{
     return commentRepository.save(newComment)
@@ -217,8 +217,27 @@ Nothing happens until you subscribe. Let's see my example.
         return "Post No. $postId is updated: \"$newBody\""
     }
 
-In this function, findByPostId(postId).flatMap{...} acts as a recipe to change the part (body) of specific entity and then update it.
+In this function, findByPostId(postId).flatMap{...} returns a publisher and maps it,
+acting as a recipe to change the part (body) of specific entity and then update it.
 However, it does not execute the publisher. This is why subscribe() needs to be there.
+
+To call update method in controller, you need @PutMapping.
+
+### Delete
+We can DELETE documents with specific ID, or found by specific queries, like other operations!
+Simply use deleteById(), or create a custom delete query.
+
+    // CommentService.kt
+    fun deleteCommentsByUserName(name: String): String{
+        commentRepository.deleteQueryByUserName(name).subscribe()
+    return "Deleted $name's Posts"
+    }
+
+Especially for DELETE, you can even use the annotation, @DeleteQuery!
+
+    // CommentRepository.kt
+    @DeleteQuery("{'name': ?0}")
+    fun deleteQueryByUserName(name: String): Flux<Comment>
 
 ## Exceptions
 ### MongoSocketOpenException
