@@ -252,10 +252,9 @@ Have a look at some solutions below.
 
 1. Is your MongoDB cluster connected correctly? Check the status of the cluster from MongoDB Atlas. Wake it up if it is paused.
 2. Check the application.properties setting once again.
-3. Spring Boot has an auto-configuration feature, which triggers MongoAutoConfiguration after detecting the Mongo driver. If you are not mind to use it, remove the exclusion from the annotation, @EnableAutoConfiguration.
-4. Check your own configuration again if you removed auto-configuration.
-5. 
-
+3. Spring Boot has an auto-configuration feature, which triggers Mongo(Reactive)AutoConfiguration after detecting the Mongo driver. If you are not mind to use it, remove the exclusion from the annotation, @EnableAutoConfiguration.
+4. In case you use Mongo(Reactive)AutoConfiguration, make sure it can connect to localhost:27017.
+5. Check your own configuration again if you removed auto-configuration.
 
 ### HTTP 405
 
