@@ -218,7 +218,7 @@ Nothing happens until you subscribe. Let's see my example.
     }
 
 In this function, findByPostId(postId).flatMap{...} returns a publisher and maps it,
-acting as a recipe to change the part (body) of specific entity and then update it.
+acting as a recipe to change a field (body) of specific item emitted by Mono and then update it.
 However, it does not execute the publisher. This is why subscribe() needs to be there.
 
 To call update method in controller, you need @PutMapping.
@@ -250,7 +250,12 @@ If anything in your connection is wrong, you will get these exceptions...
 
 Have a look at some solutions below.
 
-1. Is your MongoDB cluster connected correctly? Check the status of the cluster from MongoDB Atlas. Also, check the application.properties setting once again.
+1. Is your MongoDB cluster connected correctly? Check the status of the cluster from MongoDB Atlas. Wake it up if it is paused.
+2. Check the application.properties setting once again.
+3. Spring Boot has an auto-configuration feature, which triggers MongoAutoConfiguration after detecting the Mongo driver. If you are not mind to use it, remove the exclusion from the annotation, @EnableAutoConfiguration.
+4. Check your own configuration again if you removed auto-configuration.
+5. 
+
 
 ### HTTP 405
 
