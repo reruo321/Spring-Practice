@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
 	id("org.springframework.boot") version "2.6.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -24,15 +22,20 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.7")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
+	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.4.5")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
 }
 
-tasks.withType<KotlinCompile> {
+tasks.compileKotlin {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "17"
 	}
 }
 
-tasks.withType<Test> {
+tasks.test {
 	useJUnitPlatform()
 }
