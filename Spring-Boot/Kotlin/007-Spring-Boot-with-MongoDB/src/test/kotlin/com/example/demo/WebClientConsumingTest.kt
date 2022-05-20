@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 
-@DataMongoTest //(properties = ["spring.mongodb.embedded.version=4.0.2"])
+@DataMongoTest(properties = ["spring.mongodb.embedded.version=4.0.2"])
 @ExtendWith(SpringExtension::class)
 class WebClientConsumingTest{
     @Test
