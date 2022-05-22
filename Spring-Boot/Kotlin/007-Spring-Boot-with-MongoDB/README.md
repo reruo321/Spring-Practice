@@ -247,6 +247,20 @@ You can also do some unit tests on both Spring Boot and MongoDB.
 While using Embedded MongoDB, make sure to notify its version for *properties* of @DataMongoTest,
 or the test will not work.
 
+## Security Configuration
+**Spring Security** is a customizable authentication and access-control framework for Spring-based applications.
+
+
+    @EnableWebSecurity
+    @Configuration
+    internal class SecurityConfig : WebSecurityConfigurerAdapter() {
+        @Throws(Exception::class)
+        override fun configure(http: HttpSecurity) {
+            http.csrf().disable()
+        }
+    }
+
+
 ## Exceptions
 ### MongoSocketOpenException
 If anything in your connection is wrong, you will get these exceptions...
