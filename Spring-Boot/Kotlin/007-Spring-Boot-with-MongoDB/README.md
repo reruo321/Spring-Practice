@@ -239,6 +239,14 @@ Especially for DELETE, you can even use the annotation, @DeleteQuery!
     @DeleteQuery("{'name': ?0}")
     fun deleteQueryByUserName(name: String): Flux<Comment>
 
+## Test
+You can also do some unit tests on both Spring Boot and MongoDB.
+
+    @DataMongoTest(properties = ["spring.mongodb.embedded.version=4.0.2"])
+
+While using Embedded MongoDB, make sure to notify its version for *properties* of @DataMongoTest,
+or the test will not work.
+
 ## Exceptions
 ### MongoSocketOpenException
 If anything in your connection is wrong, you will get these exceptions...
