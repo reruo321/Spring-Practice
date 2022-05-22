@@ -250,6 +250,9 @@ or the test will not work.
 ## Security Configuration
 **Spring Security** is a customizable authentication and access-control framework for Spring-based applications.
 
+CSRF(Cross-Site Request Forgery) protection is one of the recommended security option,
+which prevents an attacker to induce authenticated users so that they execute unwanted actions on the application.
+However, if we are only creating a service that is used by non-browser client, it may be disabled.
 
     @EnableWebSecurity
     @Configuration
@@ -259,7 +262,6 @@ or the test will not work.
             http.csrf().disable()
         }
     }
-
 
 ## Exceptions
 ### MongoSocketOpenException
