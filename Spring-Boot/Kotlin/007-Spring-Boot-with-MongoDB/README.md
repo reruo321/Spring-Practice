@@ -263,6 +263,8 @@ However, if we are only creating a service that is used by non-browser client, i
         }
     }
 
+This example code shows the way to disable CSRF protection...
+
 ## Exceptions
 ### MongoSocketOpenException
 If anything in your connection is wrong, you will get these exceptions...
