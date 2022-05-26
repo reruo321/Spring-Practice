@@ -1,1 +1,1 @@
-rootProject.name = "007-Spring-Boot-with-MongoDB"
+rootProject.name = "008-Spring-Boot-With-React-JS"
