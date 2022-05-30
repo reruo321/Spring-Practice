@@ -9,3 +9,5 @@ to build hypermedia-driven REST web services that connect to Spring Data reposit
 ## React.js
 **React.js** is one of the Javascript library for creating a UI.
 ## H2
+**H2** is a Java-based open-source JDBC API. It has embedded and server modes.
+
