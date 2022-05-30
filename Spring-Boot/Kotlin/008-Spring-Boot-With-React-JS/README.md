@@ -7,3 +7,5 @@ This time we will learn how to combine powerful backend of Spring Boot with Reac
 **Spring Data REST** is built on top of the Spring Data project and makes it easy
 to build hypermedia-driven REST web services that connect to Spring Data repositories.
 ## React.js
+**React.js** is one of the Javascript library for creating a UI.
+## H2
