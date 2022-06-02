@@ -16,7 +16,7 @@ class Book(@Id @GeneratedValue private val id: Long,
     override fun equals(other: Any?): Boolean {
         if(this === other)
             return true
-        if((other !is Book))
+        if(other == null || javaClass.kotlin != other.javaClass.kotlin)
             return false
         val book = other as Book
         return Objects.equals(id, book.id) &&
