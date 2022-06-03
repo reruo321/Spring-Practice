@@ -24,4 +24,8 @@ class Book(@Id @GeneratedValue private val id: Long,
                 Objects.equals(genre, book.genre)
     }
 
+    @Override
+    override fun hashCode(): Int {
+        return Objects.hash(id, name, genre)
+    }
 }
