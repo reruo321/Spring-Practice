@@ -28,4 +28,9 @@ class Book(@Id @GeneratedValue private val id: Long,
     override fun hashCode(): Int {
         return Objects.hash(id, name, genre)
     }
+
+    @Override
+    override fun toString(): String {
+        return "Book{\nid=$id,\nname=$name,\ngenre=$genre\n}"
+    }
 }
