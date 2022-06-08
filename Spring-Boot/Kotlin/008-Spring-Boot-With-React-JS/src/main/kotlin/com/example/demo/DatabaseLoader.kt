@@ -9,7 +9,7 @@ class DatabaseLoader(@Autowired private val repository: BookRepository): Command
     @Override
     @Throws(Exception::class)
     override fun run(vararg args: String?) {
-        repository.save(Book(0, "TEPS", "Study"))
+        repository.save(Book("TEPS", "Study"))
     }
 
 

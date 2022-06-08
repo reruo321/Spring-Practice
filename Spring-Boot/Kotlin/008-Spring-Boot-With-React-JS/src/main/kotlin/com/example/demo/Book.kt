@@ -7,11 +7,13 @@ import javax.persistence.Id
 
 
 @Entity
-class Book(@Id @GeneratedValue private val id: Long,
-            private val name: String,
+class Book( private val name: String,
             private val genre: String
         )
 {
+    @Id @GeneratedValue
+    private val id: Long? = null
+
     @Override
     override fun equals(other: Any?): Boolean {
         if(this === other)

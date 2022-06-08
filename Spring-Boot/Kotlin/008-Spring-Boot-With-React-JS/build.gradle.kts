@@ -1,13 +1,22 @@
 plugins {
+	val kotlinVersion = "1.6.21"
+
 	id("org.springframework.boot") version "2.6.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.10"
-	kotlin("plugin.spring") version "1.6.10"
+	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
+	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
+	kotlin("jvm") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
 }
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
+
+apply{
+	plugin("org.jetbrains.kotlin.plugin.jpa")
+	plugin("org.jetbrains.kotlin.plugin.noarg")
+}
 
 repositories {
 	mavenCentral()
