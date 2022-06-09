@@ -34,3 +34,4 @@ In case you did not add JPA plugin, let's put them together!
         plugin("org.jetbrains.kotlin.plugin.jpa")
         plugin("org.jetbrains.kotlin.plugin.noarg")
     }
+
