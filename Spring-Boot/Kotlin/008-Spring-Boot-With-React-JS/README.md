@@ -35,3 +35,11 @@ In case you did not add JPA plugin, let's put them together!
         plugin("org.jetbrains.kotlin.plugin.noarg")
     }
 
+## Launching the Backend
+After writing all backend sources whose extension will be .kt, let's
+
+    ./gradlew bootRun
+
+on the terminal.
+
+(Note that the official tutorial uses Maven, instead of Gradle.)
