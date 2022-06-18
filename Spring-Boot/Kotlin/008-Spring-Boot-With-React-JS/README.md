@@ -43,3 +43,10 @@ After writing all backend sources whose extension will be .kt, let's
 on the terminal.
 
 (Note that the official tutorial uses Maven, instead of Gradle.)
+
+## Issues
+### Failed to configure a DataSource
+
+    Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+There is [a good explanation](https://www.baeldung.com/spring-boot-failed-to-configure-data-source) on this problem,
