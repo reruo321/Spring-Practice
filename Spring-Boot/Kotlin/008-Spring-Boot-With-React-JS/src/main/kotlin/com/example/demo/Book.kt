@@ -5,9 +5,8 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
-
 @Entity
-class Book( private val name: String,
+data class Book( private val name: String,
             private val genre: String
         )
 {
