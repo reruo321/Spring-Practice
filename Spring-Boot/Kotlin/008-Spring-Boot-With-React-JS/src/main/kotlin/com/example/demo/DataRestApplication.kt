@@ -2,10 +2,13 @@ package com.example.demo
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
-@SpringBootApplication
-class DataRestApplication {
-}
+@SpringBootApplication(exclude=[DataSourceAutoConfiguration::class])
+@EnableJpaRepositories
+class DataRestApplication
+
 fun main(){
     SpringApplication.run(DataRestApplication::class.java)
 }
