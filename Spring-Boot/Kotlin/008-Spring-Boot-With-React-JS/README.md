@@ -45,6 +45,16 @@ on the terminal.
 (Note that the official tutorial uses Maven, instead of Gradle.)
 
 ## Issues
+### Base Path is Not Working
+
+    spring.data.rest.base-path=/api
+
+This only works on the Spring Boot whose version is below 2.0.
+
+    server.servlet.context-path=/api
+
+Use this instead for 2.X version.
+
 ### Failed to configure a DataSource
 
     Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
