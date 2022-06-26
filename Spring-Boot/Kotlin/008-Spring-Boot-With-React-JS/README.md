@@ -60,3 +60,6 @@ Use this instead for 2.X version.
     Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
 
 There is [a good explanation](https://www.baeldung.com/spring-boot-failed-to-configure-data-source) on this problem,
+
+### Extension Support
+You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
