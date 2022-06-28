@@ -29,6 +29,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.0")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("com.h2database:h2")
+	implementation("org.springframework.boot:spring-boot-starter-data-rest:2.7.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.h2database:h2:2.1.212")

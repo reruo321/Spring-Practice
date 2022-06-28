@@ -1,8 +1,8 @@
 package com.example.demo
 
 import org.springframework.data.repository.CrudRepository
-import org.springframework.stereotype.Repository
+import org.springframework.data.rest.core.annotation.RepositoryRestResource
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "books", path = "books")
 interface BookRepository: CrudRepository<Book, Long> {
 }

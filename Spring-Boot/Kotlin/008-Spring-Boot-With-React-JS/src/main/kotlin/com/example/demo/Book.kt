@@ -3,6 +3,7 @@ package com.example.demo
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
@@ -10,8 +11,8 @@ data class Book( private val name: String,
             private val genre: String
         )
 {
-    @Id @GeneratedValue
-    private val id: Long? = null
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private val id: Long = -1
 
     @Override
     override fun equals(other: Any?): Boolean {
