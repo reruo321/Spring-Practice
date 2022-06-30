@@ -44,6 +44,9 @@ on the terminal.
 
 (Note that the official tutorial uses Maven, instead of Gradle.)
 
+### Extension Support
+You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
+
 ## Issues
 ### Base Path is Not Working
 
@@ -61,5 +64,3 @@ Use this instead for 2.X version.
 
 There is [a good explanation](https://www.baeldung.com/spring-boot-failed-to-configure-data-source) on this problem,
 
-### Extension Support
-You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
