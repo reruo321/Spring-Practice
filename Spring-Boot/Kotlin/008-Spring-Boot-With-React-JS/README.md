@@ -47,6 +47,8 @@ on the terminal.
 ### Extension Support
 You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
 
+### Additional Dependency
+
 ## Issues
 ### Base Path is Not Working
 
