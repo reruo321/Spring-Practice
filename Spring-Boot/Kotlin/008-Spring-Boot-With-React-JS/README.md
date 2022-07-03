@@ -5,6 +5,8 @@ This time we will learn how to combine powerful backend of Spring Boot with Reac
 
 Because there is already a great official guide for the project, my README will focus more on some Kotlin-specific things.
 
+[guide 2](https://developer.okta.com/blog/2020/01/13/kotlin-react-crud)
+
 ## Spring Data REST
 **Spring Data REST** is built on top of the Spring Data project and makes it easy
 to build hypermedia-driven REST web services that connect to Spring Data repositories.
