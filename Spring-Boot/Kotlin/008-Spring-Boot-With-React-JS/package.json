@@ -1,0 +1,23 @@
+{
+  "name": "spring-data-rest-and-reactjs",
+  "version": "0.1.0",
+  "description": "Spring Data REST & React JS Test in Kotlin + Gradle Environment",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:reruo321/Spring-Practice.git"
+  },
+  "keywords": [
+    "rest",
+    "spring",
+    "data",
+    "react",
+    "gradle",
+    "kotlin"
+  ],
+  "author": "reruo321",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com:reruo321/Spring-Practice",
+  "scripts": {
+    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js"
+  }
+}
