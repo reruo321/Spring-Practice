@@ -46,6 +46,8 @@ on the terminal.
 
 (Note that the official tutorial uses Maven, instead of Gradle.)
 
+## package.json
+
 ### Extension Support
 You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
 
