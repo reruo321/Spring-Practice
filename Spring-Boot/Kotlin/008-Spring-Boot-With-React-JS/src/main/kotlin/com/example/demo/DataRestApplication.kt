@@ -12,7 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 class DataRestApplication{
     @Bean
     fun run(@Autowired repository: BookRepository) = ApplicationRunner {
-        repository.save(Book("TEPS", "Study"))
+        repository.save(Book("TEPS", "English"))
+        repository.save(Book("Funny C++", "Programming"))
     }
 }
 

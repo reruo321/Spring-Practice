@@ -46,6 +46,9 @@ on the terminal.
 
 (Note that the official tutorial uses Maven, instead of Gradle.)
 
+If you check a URL http://localhost:8080/api/books, you can see a list of the links in the application.
+Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entity.
+
 ## package.json
 
 ### Extension Support
