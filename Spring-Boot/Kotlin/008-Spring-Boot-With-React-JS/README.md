@@ -49,7 +49,9 @@ on the terminal.
 If you check a URL http://localhost:8080/api/books, you can see a list of the links in the application.
 Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entity.
 
-## package.json
+## npm
+**npm**(Node Package Manager) packages are defined in files called *package.json*, which is written in JSON.
+It must include at least two fields: *name* and *version*.
 
 ### Extension Support
 You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
