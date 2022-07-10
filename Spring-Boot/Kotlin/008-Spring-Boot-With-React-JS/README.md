@@ -54,7 +54,7 @@ Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entit
 It must include at least two fields: *name* and *version*.
 
 ### Extension Support
-You can ignore the support tooltips on .js or .css in Intellij IDEA Community.
+You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
 
 ### Additional Dependency
 
