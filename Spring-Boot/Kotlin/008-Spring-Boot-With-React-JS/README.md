@@ -53,6 +53,21 @@ Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entit
 **npm**(Node Package Manager) packages are defined in files called *package.json*, which is written in JSON.
 It must include at least two fields: *name* and *version*.
 
+You should put package.json in the root of the project!
+
+(Example of package.json)
+
+    {
+        "name": "spring-data-rest-and-reactjs",
+        "version": "0.1.0",
+        "description": "Spring Data REST & React JS Test in Kotlin + Gradle Environment",
+        "repository": {
+        "type": "git",
+        "url": "git@github.com:reruo321/Spring-Practice.git"
+        },
+        ...
+    }
+
 ### Extension Support
 You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
 
