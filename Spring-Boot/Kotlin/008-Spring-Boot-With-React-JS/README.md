@@ -71,7 +71,6 @@ You should put package.json in the root of the project!
 ### Extension Support
 You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
 
-### Additional Dependency
 
 ## Issues
 ### Base Path is Not Working
