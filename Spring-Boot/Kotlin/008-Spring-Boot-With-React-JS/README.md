@@ -53,7 +53,7 @@ Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entit
 **npm**(Node Package Manager) packages are defined in files called *package.json*, which is written in JSON.
 It must include at least two fields: *name* and *version*.
 
-You should put package.json in the root of the project!
+You should make and put package.json in the root of the project!
 
 (Example of package.json)
 
