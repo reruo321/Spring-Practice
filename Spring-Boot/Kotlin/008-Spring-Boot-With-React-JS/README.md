@@ -70,10 +70,6 @@ You should make and put package.json in the root of the project!
         ...
     }
 
-### Extension Support
-You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
-
-
 ## Issues
 ### Base Path is Not Working
 
@@ -90,4 +86,7 @@ Use this instead for 2.X version.
     Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
 
 There is [a good explanation](https://www.baeldung.com/spring-boot-failed-to-configure-data-source) on this problem,
+and you can follow the settings to solve this issue.
 
+### Extension Support
+You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
