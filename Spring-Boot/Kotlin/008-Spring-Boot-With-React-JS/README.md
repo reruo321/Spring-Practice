@@ -69,7 +69,7 @@ You should make and put package.json in the root of the project!
     }
 
 ### Frontend Settings
-We will create a client application and add some dependencies.
+We will create a client application and add some dependencies with **yarn**.
 
 ## Issues
 ### Base Path is Not Working
