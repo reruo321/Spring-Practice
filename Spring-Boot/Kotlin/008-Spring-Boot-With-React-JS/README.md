@@ -68,8 +68,11 @@ You should make and put package.json in the root of the project!
         ...
     }
 
-### Frontend Settings
-We will create a client application and add some dependencies with **yarn**.
+## Frontend Settings
+We will create a client application and add some dependencies.
+
+### Yarn
+Yarn is a package manager, and you can download it from [the official website](https://yarnpkg.com/getting-started/install).
 
 ## Issues
 ### Base Path is Not Working
