@@ -72,7 +72,17 @@ You should make and put package.json in the root of the project!
 We will create a client application and add some dependencies.
 
 ### Yarn
-Yarn is a package manager, and you can download it from [the official website](https://yarnpkg.com/getting-started/install).
+**Yarn** is a package manager, and you can download it from [the official website](https://yarnpkg.com/getting-started/install).
+
+#### Installing Yarn
+The manager is recommended to be managed through **Corepack**, so with Node.js >= 16.10 version,
+
+    corepack enable
+
+However, if you are stuck on this step because of an internal error,
+
+    Error: EPERM: operation not permitted, open 'C:\Program Files\nodejs\pnpm.ps1'
+
 
 ## Issues
 ### Base Path is Not Working
