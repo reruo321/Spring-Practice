@@ -83,6 +83,7 @@ However, if you are stuck on this step because of an internal error,
 
     Error: EPERM: operation not permitted, open 'C:\Program Files\nodejs\pnpm.ps1'
 
+Try running the CMD or the IDEA as administrator.
 
 ## Issues
 ### Base Path is Not Working
