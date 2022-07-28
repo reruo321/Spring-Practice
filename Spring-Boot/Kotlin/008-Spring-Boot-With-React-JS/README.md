@@ -5,7 +5,7 @@ This time we will learn how to combine powerful backend of Spring Boot with Reac
 
 Because there is already a great official guide for the project, my README will focus more on some Kotlin-specific things.
 
-[guide 2](https://developer.okta.com/blog/2020/01/13/kotlin-react-crud)
+[Guide for Kotlin - Build a CRUD Application with Kotlin and React](https://developer.okta.com/blog/2020/01/13/kotlin-react-crud)
 
 ## Spring Data REST
 **Spring Data REST** is built on top of the Spring Data project and makes it easy
@@ -73,8 +73,6 @@ We will create a client application and add some dependencies.
 
 ### Yarn
 **Yarn** is a package manager, and you can download it from [the official website](https://yarnpkg.com/getting-started/install).
-
-#### Installing Yarn
 The manager is recommended to be managed through **Corepack**, so with Node.js >= 16.10 version,
 
     corepack enable
@@ -83,7 +81,35 @@ However, if you are stuck on this step because of an internal error,
 
     Error: EPERM: operation not permitted, open 'C:\Program Files\nodejs\pnpm.ps1'
 
-Try running the CMD or the IDEA as administrator.
+Try running the CMD or the IDEA as administrator. After that, try this command...
+
+    yarn init -2
+
+Suddenly, OMG! Too many things make us annoyed.
+
+    yarn : 이 시스템에서 스크립트를 실행할 수 없으므로 C:\P    rogramFiles\nodejs\yarn.ps1 파일을 로드할 수 없습니다.
+    ...
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+Let's run Windows PowerShell app as administrator, too.
+
+    > ExecutionPolicy
+    Restricted
+    > Set-ExecutionPolicy Unrestricted 
+    (type this) y
+    > ExecutionPolicy
+    Unrestricted
+
+After solving the error, *yarn init -2* will output something like this on the IDEA terminal.
+
+    {
+        name: '008-Spring-Boot-With-React-JS',
+        packageManager: 'yarn@3.2.2'
+    }
+
+Use this to update Yarn to the latest version.
+
+    yarn set version stable
 
 ## Issues
 ### Base Path is Not Working
