@@ -100,7 +100,7 @@ Let's run Windows PowerShell app as administrator, too.
     > ExecutionPolicy
     Unrestricted
 
-After solving the error, *yarn init -2* will output something like this on the terminal.
+After solving the error, *yarn init -2* will output something like this on the IDEA terminal.
 
     {
         name: '008-Spring-Boot-With-React-JS',
