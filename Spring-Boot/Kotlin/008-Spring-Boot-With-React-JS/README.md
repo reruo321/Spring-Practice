@@ -131,3 +131,5 @@ and you can follow the settings to solve this issue.
 
 ### Extension Support
 You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
+
+solved?
