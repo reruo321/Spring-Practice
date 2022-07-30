@@ -111,6 +111,11 @@ Use this to update Yarn to the latest version.
 
     yarn set version stable
 
+After settings, move to the *client* in the directory, and you can run yarn!
+
+    cd client
+    yarn start
+
 ## Issues
 ### Base Path is Not Working
 
@@ -130,6 +135,7 @@ There is [a good explanation](https://www.baeldung.com/spring-boot-failed-to-con
 and you can follow the settings to solve this issue.
 
 ### Extension Support
-You can ignore the support tooltips on .js or .css in Intellij IDEA Community, even though a specialized editor for them does not exist in this edition.
+If you are using Intellij IDEA in Community version, you would not be able to get supports for .js or .css files,
+or compose HTTP requests using .http files...
 
-solved?
+You can use other applications such as Postman as an alternative for HTTP request.

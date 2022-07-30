@@ -7,13 +7,14 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Book( private val name: String,
-            private val genre: String
-        )
+data class Book(
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long = -1,
+    val name: String = "",
+    var genre: String = ""
+    )
 {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private val id: Long = -1
-
     @Override
     override fun equals(other: Any?): Boolean {
         if(this === other)

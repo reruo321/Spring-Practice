@@ -8,12 +8,11 @@ import org.springframework.context.annotation.Bean
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @SpringBootApplication
-@EnableJpaRepositories
 class DataRestApplication{
     @Bean
     fun run(@Autowired repository: BookRepository) = ApplicationRunner {
-        repository.save(Book("TEPS", "English"))
-        repository.save(Book("Funny C++", "Programming"))
+        repository.save(Book(name = "TEPS", genre = "English"))
+        repository.save(Book(name = "Funny C++", genre = "Programming"))
     }
 }
 

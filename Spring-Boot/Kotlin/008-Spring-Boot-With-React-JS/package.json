@@ -19,5 +19,10 @@
   "homepage": "https://github.com:reruo321/Spring-Practice",
   "scripts": {
     "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "react-router-dom": "^6.3.0",
+    "reactstrap": "^9.1.2"
   }
 }
