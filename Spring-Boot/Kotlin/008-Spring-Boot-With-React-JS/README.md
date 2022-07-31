@@ -77,6 +77,11 @@ The manager is recommended to be managed through **Corepack**, so with Node.js >
 
     corepack enable
 
+After settings, move to the *client* in the directory, and you can run yarn!
+
+    cd client
+    yarn start
+
 However, if you are stuck on this step because of an internal error,
 
     Error: EPERM: operation not permitted, open 'C:\Program Files\nodejs\pnpm.ps1'
@@ -110,11 +115,6 @@ After solving the error, *yarn init -2* will output something like this on the I
 Use this to update Yarn to the latest version.
 
     yarn set version stable
-
-After settings, move to the *client* in the directory, and you can run yarn!
-
-    cd client
-    yarn start
 
 ## Issues
 ### Base Path is Not Working
