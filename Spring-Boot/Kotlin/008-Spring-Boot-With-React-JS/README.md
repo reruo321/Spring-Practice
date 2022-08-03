@@ -3,9 +3,13 @@ This time we will learn how to combine powerful backend of Spring Boot with Reac
 
 [The Official Guide](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
 
-Because there is already a great official guide for the project, my README will focus more on some Kotlin-specific things.
+Of course, there is already a great official guide for the project.
+
+However, as it uses Java-Maven environment, we should pay attention to Kotlin-Gradle-specific things.
 
 [Guide for Kotlin - Build a CRUD Application with Kotlin and React](https://developer.okta.com/blog/2020/01/13/kotlin-react-crud)
+
+Based on this guide, I'll build up my own project.
 
 ## Spring Data REST
 **Spring Data REST** is built on top of the Spring Data project and makes it easy
@@ -38,16 +42,21 @@ In case you did not add JPA plugin, let's put them together!
     }
 
 ## Launching the Backend
-After writing all backend sources whose extension will be .kt, let's
+After writing all backend sources, whose names will be Book.kt, BookRepository.kt, DataRestApplication.kt, let's
 
     ./gradlew bootRun
 
 on the terminal.
 
-(Note that the official tutorial uses Maven, instead of Gradle.)
-
 If you check a URL http://localhost:8080/api/books, you can see a list of the links in the application.
-Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entity.
+Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entity with specific ID.
+
+※ NOTE: The guide from okta Developer added a class called *RepositoryRestConfigurer*,
+but any Spring Boot users with its version >= 1.2 can configure it via *application.properties* file!
+
+(application.properies)
+
+    server.servlet.context-path=/api
 
 ## npm
 **npm**(Node Package Manager) packages are defined in files called *package.json*, which is written in JSON.
