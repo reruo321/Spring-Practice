@@ -54,6 +54,8 @@ Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entit
 ※ NOTE: The guide from okta Developer added a class called *RepositoryRestConfigurer*,
 but any Spring Boot users with its version >= 1.2 can configure it via *application.properties* file!
 
+Add this, then Spring Boot serves content on the root context path!
+
 (application.properies)
 
     server.servlet.context-path=/api
