@@ -42,6 +42,19 @@ In case you did not add JPA plugin, let's put them together!
     }
 
 ## Launching the Backend
+※ NOTE: The guide from okta Developer added a class called *RepositoryRestConfigurer* with @Configuration,
+and the official one configures application.properties by adding this.
+
+    spring.data.rest.base-path=/api
+
+However, any Spring Boot users with its version >= 1.2 can configure it via *application.properties* file!
+
+server.servlet.context-path=/api, then Spring Boot will serve content on the root context path!
+
+(application.properies)
+
+    server.servlet.context-path=/api
+
 After writing all backend sources, whose names will be Book.kt, BookRepository.kt, DataRestApplication.kt, let's
 
     ./gradlew bootRun
@@ -51,14 +64,19 @@ on the terminal.
 If you check a URL http://localhost:8080/api/books, you can see a list of the links in the application.
 Also, a URL such as http://localhost:8080/api/books/1 allows you to see an entity with specific ID.
 
-※ NOTE: The guide from okta Developer added a class called *RepositoryRestConfigurer*,
-but any Spring Boot users with its version >= 1.2 can configure it via *application.properties* file!
+### Context Path & Servlet Path
+There are two things called **context path** and **servlet path**.
 
-Add this, then Spring Boot serves content on the root context path!
+The context path is a name with which a web application is accessed, thus the root of the application.
+The default path is served as ("/"), and configuring the context path will also affect the servlet path.
 
-(application.properies)
+    server.servlet.context-path=/context-path
 
-    server.servlet.context-path=/api
+On the other hand, the servlet path represents the path of the main DispatcherServlet.
+
+    spring.mvc.servlet.path=/servlet-path
+
+Applying both of properties will output the application servlet path: http://localhost:8080/context-path/servlet-path.
 
 ## npm
 **npm**(Node Package Manager) packages are defined in files called *package.json*, which is written in JSON.
