@@ -42,14 +42,16 @@ In case you did not add JPA plugin, let's put them together!
     }
 
 ## Launching the Backend
-※ NOTE: The guide from okta Developer added a class called *RepositoryRestConfigurer* with @Configuration,
-and the official one configures application.properties by adding this.
+※ NOTE: There are several ways to configure context path.
+
+The guide from okta Developer added a class called *RepositoryRestConfigurer* with @Configuration,
+and the official one suggests adding this to application.properties.
 
     spring.data.rest.base-path=/api
 
-However, any Spring Boot users with its version >= 1.2 can configure it via *application.properties* file!
+However, if those do not work well, any Spring Boot users with its version >= 1.2 would try this one!
 
-server.servlet.context-path=/api, then Spring Boot will serve content on the root context path!
+Open *application.properties*, and set the property *server.servlet.context-path* as */api*.
 
 (application.properies)
 
@@ -73,6 +75,8 @@ The default path is served as ("/"), and configuring the context path will also 
     server.servlet.context-path=/context-path
 
 On the other hand, the servlet path represents the path of the main DispatcherServlet.
+DispatcherServlet acts as the front controller for Spring-based web applications,
+which accepts all requests coming into the website and makes decisions that who are the right controllers to handle them.
 
     spring.mvc.servlet.path=/servlet-path
 
