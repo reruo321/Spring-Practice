@@ -169,6 +169,6 @@ and you can follow the settings to solve this issue.
 
 ### Extension Support
 If you are using Intellij IDEA in Community version, you would not be able to get supports for .js or .css files,
-or compose HTTP requests using .http files...
+or compose HTTP requests using .http files... (Ultimate version only)
 
 You can use other applications such as Postman as an alternative for HTTP request.
