@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git@github.com:reruo321/Spring-Practice.git"
   },
+  "proxy": "http://localhost:8080",
   "keywords": [
     "rest",
     "spring",
