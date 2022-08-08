@@ -34,6 +34,7 @@ In case you did not add JPA plugin, let's put them together!
         ...
     	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
         id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
+    	kotlin("plugin.spring") version kotlinVersion
     }
 
     apply{
