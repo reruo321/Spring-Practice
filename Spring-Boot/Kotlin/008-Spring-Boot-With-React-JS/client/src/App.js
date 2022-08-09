@@ -5,17 +5,17 @@ import './App.css';
 class App extends Component {
   state = {
     isLoading: true,
-    coffeeShops: []
+    books: []
   };
 
   async componentDidMount() {
-    const response = await fetch('/api/coffeeshops');
+    const response = await fetch('/api/books');
     const body = await response.json();
-    this.setState({coffeeShops: body._embedded.coffeeshops, isLoading: false});
+    this.setState({books: body._embedded.books, isLoading: false});
   }
 
   render() {
-    const {coffeeShops, isLoading} = this.state;
+    const {books, isLoading} = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -25,10 +25,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className="App-intro">
-            <h2>Coffee Shop List</h2>
-            {coffeeShops.map(coffeeShop =>
-              <div key={coffeeShop.id}>
-                {coffeeShop.name} - {coffeeShop.address}
+            <h2>Book List</h2>
+            {books.map(book =>
+              <div key={book.id}>
+                {book.name} - {book.address}
               </div>
             )}
           </div>
