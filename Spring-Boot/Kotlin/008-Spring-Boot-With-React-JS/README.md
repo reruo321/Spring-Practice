@@ -150,6 +150,13 @@ Use this to update Yarn to the latest version.
 
     yarn set version stable
 
+### Proxy Setting
+Instead of using config values to set the resource server's URL, you can use proxy.
+
+Add this to **client**/package.json file. Not one in root directory!
+
+    "proxy": "http://localhost:8080",
+
 ## Issues
 ### Base Path is Not Working
 

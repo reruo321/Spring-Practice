@@ -1,6 +1,12 @@
 import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
+import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import BookList from './BookList';
+import BookEdit from './BookEdit';
+import Api from './Api';
+import NavBar from './NavBar';
 
 class App extends Component {
   state = {
@@ -16,6 +22,7 @@ class App extends Component {
 
   render() {
     const {books, isLoading} = this.state;
+    const navbar = <NavBar/>;
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -34,6 +41,24 @@ class App extends Component {
           </div>
         </header>
       </div>
+            <Router>
+              <Switch>
+                <Route
+                  path='/'
+                  exact={true}
+                  render={(props) => <Home {...props} api={api} navbar={navbar}/>}
+                />
+                <Route
+                  path='/book-list'
+                  exact={true}
+                  render={(props) => <BookList {...props} api={api} navbar={navbar}/>}
+                />
+                <Route
+                  path='/coffee-list/:id'
+                  render={(props) => <BookEdit {...props} api={api} navbar={navbar}/>}
+                />
+              </Switch>
+            </Router>
     );
   }
 }
