@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
 class BookEdit extends Component {
@@ -21,9 +22,12 @@ class BookEdit extends Component {
   }
 
   async componentDidMount() {
-    this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
+    const params = useParams();
+      this.state.isCreate = this.props.params.id === 'new';
+//    this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
     if (!this.state.isCreate) {
-      const response = await this.props.api.getById(this.props.match.params.id);
+        const response = await this.props.api.getById(this.props.params.id);
+//      const response = await this.props.api.getById(this.props.match.params.id);
       const book = await response.json();
       this.setState({item: book});
     }
@@ -41,6 +45,7 @@ class BookEdit extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     const {item, isCreate} = this.state;
+    const navigate = useNavigate();
 
     let result = isCreate ? await this.props.api.create(item) : await this.props.api.update(item);
 
@@ -48,7 +53,8 @@ class BookEdit extends Component {
       this.setState({errorMessage: `Failed to ${isCreate ? 'create' : 'update'} record: ${result.status} ${result.statusText}`})
     } else {
       this.setState({errorMessage: null});
-      this.props.history.push('/book-list');
+        this.props.navigate('/book-list');
+//      this.props.history.push('/book-list');
     }
 
   }
@@ -91,4 +97,4 @@ class BookEdit extends Component {
   }
 }
 
-export default withRouter(BookEdit);
+export default BookEdit;

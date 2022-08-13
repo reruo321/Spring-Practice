@@ -180,3 +180,15 @@ If you are using Intellij IDEA in Community version, you would not be able to ge
 or compose HTTP requests using .http files... (Ultimate version only)
 
 You can use other applications such as Postman as an alternative for HTTP request.
+
+### react-router-dom Issues
+Following the guide, you might encounter some errors.
+
+    (App.js)
+    export 'Switch' (imported as 'Switch') was not found in 'react-router-dom'
+
+If you read [https://reactrouter.com/docs/en/v6/upgrading/v5](the official documentation of React Router),
+you may notice we should upgrade all <Switch> elements to <Routes>.
+
+    export 'withRouter' (imported as 'withRouter') was not found in 'react-router-dom'
+

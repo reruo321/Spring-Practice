@@ -29,6 +29,25 @@ class App extends Component {
     }
 
     return (
+        <>
+          <Router>
+                <Routes>
+                     <Route
+                         path='/'
+                         exact={true}
+                         render={(props) => <Home {...props} api={api} navbar={navbar}/>}
+                     />
+                     <Route
+                        path='/book-list'
+                        exact={true}
+                        render={(props) => <BookList {...props} api={api} navbar={navbar}/>}
+                     />
+                     <Route
+                        path='/coffee-list/:id'
+                        render={(props) => <BookEdit {...props} api={api} navbar={navbar}/>}
+                    />
+                </Routes>
+            </Router>
       <div className="App">
         <header className="App-header">
           <div className="App-intro">
@@ -41,26 +60,9 @@ class App extends Component {
           </div>
         </header>
       </div>
-            <Router>
-              <Switch>
-                <Route
-                  path='/'
-                  exact={true}
-                  render={(props) => <Home {...props} api={api} navbar={navbar}/>}
-                />
-                <Route
-                  path='/book-list'
-                  exact={true}
-                  render={(props) => <BookList {...props} api={api} navbar={navbar}/>}
-                />
-                <Route
-                  path='/coffee-list/:id'
-                  render={(props) => <BookEdit {...props} api={api} navbar={navbar}/>}
-                />
-              </Switch>
-            </Router>
+      </>
     );
-  }
+    }
 }
 
 export default App;
