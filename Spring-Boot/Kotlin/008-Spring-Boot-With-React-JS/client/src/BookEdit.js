@@ -22,7 +22,7 @@ class BookEdit extends Component {
   }
 
   async componentDidMount() {
-    const params = useParams();
+//    const params = useParams();
       this.state.isCreate = this.props.params.id === 'new';
 //    this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
     if (!this.state.isCreate) {
@@ -45,7 +45,7 @@ class BookEdit extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     const {item, isCreate} = this.state;
-    const navigate = useNavigate();
+//    const navigate = useNavigate();
 
     let result = isCreate ? await this.props.api.create(item) : await this.props.api.update(item);
 

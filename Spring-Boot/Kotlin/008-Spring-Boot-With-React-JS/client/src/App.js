@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
 import Home from './Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BookList from './BookList';
 import BookEdit from './BookEdit';
 import Api from './Api';
 import NavBar from './NavBar';
+
+const api = new Api();
 
 class App extends Component {
   state = {
@@ -43,7 +44,7 @@ class App extends Component {
                         render={(props) => <BookList {...props} api={api} navbar={navbar}/>}
                      />
                      <Route
-                        path='/coffee-list/:id'
+                        path='/book-list/:id'
                         render={(props) => <BookEdit {...props} api={api} navbar={navbar}/>}
                     />
                 </Routes>
