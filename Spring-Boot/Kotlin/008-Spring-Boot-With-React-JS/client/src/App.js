@@ -10,60 +10,29 @@ import NavBar from './NavBar';
 const api = new Api();
 
 class App extends Component {
-  state = {
-    isLoading: true,
-    books: []
-  };
-
-  async componentDidMount() {
-    const response = await fetch('/api/books');
-    const body = await response.json();
-    this.setState({books: body._embedded.books, isLoading: false});
-  }
 
   render() {
-    const {books, isLoading} = this.state;
     const navbar = <NavBar/>;
 
-    if (isLoading) {
-      return <p>Loading...</p>;
-    }
-
     return (
-        <>
-          <Router>
-                <Routes>
-                     <Route
-                         path='/'
-                         exact={true}
-                         render={(props) => <Home {...props} api={api} navbar={navbar}/>}
-                     />
-                     <Route
-                        path='/book-list'
-                        exact={true}
-                        render={(props) => <BookList {...props} api={api} navbar={navbar}/>}
-                     />
-                     <Route
-                        path='/book-list/:id'
-                        render={(props) => <BookEdit {...props} api={api} navbar={navbar}/>}
-                    />
-                </Routes>
-            </Router>
-      <div className="App">
-        <header className="App-header">
-          <div className="App-intro">
-            <h2>Book List</h2>
-            {books.map(book =>
-              <div key={book.id}>
-                {book.name} - {book.address}
-              </div>
-            )}
-          </div>
-        </header>
-      </div>
-      </>
-    );
-    }
+      <Router>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list'
+            element={<BookList api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list/:id/*'
+            element={<BookEdit api={api} navbar={navbar}/>}
+          />
+        </Routes>
+      </Router>
+    )
+  }
 }
 
 export default App;

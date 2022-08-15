@@ -192,3 +192,53 @@ you may notice we should upgrade all <Switch> elements to <Routes>.
 
     export 'withRouter' (imported as 'withRouter') was not found in 'react-router-dom'
 
+Since withRouter is no longer supported in v6, you should use **React hooks** such as useNavigate, useLocation, and useParams.
+They must be used within a functional component or a custom React hook.
+That is, they are not allowed to be called by a class component or at the top level, since it is not a Higher Order Component.
+
+    Matched leaf route at location "/" does not have an element.
+    This means it will render an <Outlet /> with a null value by default resulting in an "empty" page.
+
+Also, React Router v6 does not use <Route exact>, and all child route element and route *component* prop should be moved to a named *element* prop.
+
+    // Code from guide
+    return (
+      <Router>
+        <Switch>
+          <Route
+            path='/'
+            exact={true}
+            render={(props) => <Home {...props} api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list'
+            exact={true}
+            render={(props) => <BookList {...props} api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list/:id'
+            render={(props) => <BookEdit {...props} api={api} navbar={navbar}/>}
+          />
+        </Switch>
+      </Router>
+    )
+
+    // v6
+    return (
+      <Router>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list'
+            element={<BookList api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list/:id/*'
+            element={<BookEdit api={api} navbar={navbar}/>}
+          />
+        </Routes>
+      </Router>
+    )

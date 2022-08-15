@@ -10,7 +10,7 @@ const Book = (props) => (
     <h3>{props.name}</h3>
     <div className="book-body">
       <div className="subtitle-container">
-        <div>Name: ${props.name} </div>
+        <div>Name: {props.name} </div>
         <div>Genre: {props.genre} </div>
       </div>
     </div>
@@ -76,7 +76,7 @@ class BookList extends Component {
       <div>
         {this.props.navbar}
         <div className="d-flex flex-row justify-content-between p-3">
-          <h3 className="books-title">Books</h3>
+          <h3 className="book-list-title">Books</h3>
           <Button color="success" tag={Link} to="/book-list/new">Add New</Button>
         </div>
         {errorMessage ?

@@ -3,6 +3,37 @@ import React, { Component } from 'react';
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
+function withRouter(Component) {
+    function ComponentWithRouter(props) {
+        let location = useLocation();
+        let params = useParams();
+        let navigate = useNavigate();
+        let match = { params: useParams() };
+        let history = {
+            back: () => navigate(-1),
+            goBack: () => navigate(-1),
+            location,
+            push: (url: string, state?: any) => navigate(url, { state }),
+            replace: (url: string, state?: any) => navigate(url, {
+              replace: true,
+              state
+            })
+        };
+
+        return (
+            <Component
+                {...props}
+                history={history}
+                location={location}
+                params={params}
+                navigate={navigate}
+                match={match}
+            />
+        );
+    }
+    return ComponentWithRouter
+}
+
 class BookEdit extends Component {
 
   emptyItem = {
@@ -23,10 +54,10 @@ class BookEdit extends Component {
 
   async componentDidMount() {
 //    const params = useParams();
-      this.state.isCreate = this.props.params.id === 'new';
+      this.state.isCreate = this.props.match.params.id === 'new';
 //    this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
     if (!this.state.isCreate) {
-        const response = await this.props.api.getById(this.props.params.id);
+        const response = await this.props.api.getById(this.props.match.params.id);
 //      const response = await this.props.api.getById(this.props.match.params.id);
       const book = await response.json();
       this.setState({item: book});
@@ -53,7 +84,8 @@ class BookEdit extends Component {
       this.setState({errorMessage: `Failed to ${isCreate ? 'create' : 'update'} record: ${result.status} ${result.statusText}`})
     } else {
       this.setState({errorMessage: null});
-        this.props.navigate('/book-list');
+      this.props.history.push('/book-list');
+//        this.props.navigation.navigate('/book-list');
 //      this.props.history.push('/book-list');
     }
 
@@ -81,7 +113,7 @@ class BookEdit extends Component {
                        onChange={this.handleChange} autoComplete="name"/>
               </FormGroup>
               <FormGroup className="col-md-4 mb-3">
-                <Label for="genre">Phone</Label>
+                <Label for="genre">Genre</Label>
                 <Input type="text" name="genre" id="genre" value={item.genre || ''}
                        onChange={this.handleChange} autoComplete="genre"/>
               </FormGroup>
@@ -97,4 +129,6 @@ class BookEdit extends Component {
   }
 }
 
-export default BookEdit;
+const HOCBookEdit = withRouter(BookEdit);
+
+export default HOCBookEdit;
