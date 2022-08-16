@@ -181,13 +181,14 @@ or compose HTTP requests using .http files... (Ultimate version only)
 
 You can use other applications such as Postman as an alternative for HTTP request.
 
-### react-router-dom Issues
-Following the guide, you might encounter some errors.
+### React Router Issues
+Following the guide with the latest version of React Router, you might encounter some errors.
+These occur because of difference of syntax in major version changes.
 
     (App.js)
     export 'Switch' (imported as 'Switch') was not found in 'react-router-dom'
 
-If you read [https://reactrouter.com/docs/en/v6/upgrading/v5](the official documentation of React Router),
+If you read [the official documentation of React Router](https://reactrouter.com/docs/en/v6/upgrading/v5),
 you may notice we should upgrade all <Switch> elements to <Routes>.
 
     export 'withRouter' (imported as 'withRouter') was not found in 'react-router-dom'
@@ -199,7 +200,8 @@ That is, they are not allowed to be called by a class component or at the top le
     Matched leaf route at location "/" does not have an element.
     This means it will render an <Outlet /> with a null value by default resulting in an "empty" page.
 
-Also, React Router v6 does not use <Route exact>, and all child route element and route *component* prop should be moved to a named *element* prop.
+Also, React Router v6 does not use <Route exact>,
+and all child route element and route *component* prop should be moved to a named *element* prop.
 
     // Code from guide
     return (
@@ -222,6 +224,8 @@ Also, React Router v6 does not use <Route exact>, and all child route element an
         </Switch>
       </Router>
     )
+
+This would be adjusted to:
 
     // v6
     return (
