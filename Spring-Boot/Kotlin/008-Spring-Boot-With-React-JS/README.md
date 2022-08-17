@@ -251,3 +251,23 @@ This would be adjusted to:
 
     Each child in a list should have a unique "key" prop.
 
+We should make each child in a list, *books*, has a unique key.
+
+Let's change a line of code...
+
+(BookList.js)
+
+    {books.map( (book) =>
+        <Book {...book} remove={this.remove.bind(this)} key={book.id}/>
+    )}
+
+To
+
+    {books.map( (book, index) =>
+        <Book {...book} remove={this.remove.bind(this)} key={index}/>
+    )}
+
+### Internal Server Error
+
+    GET http://localhost:3000/api/books/undefined 500 (Internal Server Error)
+

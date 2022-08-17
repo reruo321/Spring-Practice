@@ -87,8 +87,8 @@ class BookList extends Component {
           </div> : null
         }
         <div className="d-flex flex-row flex-container flex-wrap justify-content-center">
-          {books.map( book =>
-            <Book {...book} remove={this.remove.bind(this)} key={book.id}/>
+          {books.map( (book, index) =>
+            <Book {...book} remove={this.remove.bind(this)} key={index}/>
           )}
           {!books || books.length === 0 ? <p>No books!</p> : null}
         </div>
