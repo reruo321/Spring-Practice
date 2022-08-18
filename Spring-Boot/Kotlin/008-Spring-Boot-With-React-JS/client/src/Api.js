@@ -26,6 +26,7 @@ class Api {
   }
 
   async getById(id) {
+    console.log(id)
     return await fetch(`${this.BASE_URL}/${id}`, {
       method: 'GET',
       headers: this.createHeaders()
