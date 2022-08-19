@@ -268,6 +268,7 @@ To
     )}
 
 ### Internal Server Error
+There would be several "Internal Server Error" messages such as:
 
     GET http://localhost:3000/api/books/undefined 500 (Internal Server Error)
 
