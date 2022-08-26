@@ -54,11 +54,9 @@ class BookEdit extends Component {
 
   async componentDidMount() {
 //    const params = useParams();
-      this.state.isCreate = this.props.match.params.id === 'new';
-//    this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
+      this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
     if (!this.state.isCreate) {
         const response = await this.props.api.getById(this.props.match.params.id);
-//      const response = await this.props.api.getById(this.props.match.params.id);
       const book = await response.json();
       this.setState({item: book});
     }
@@ -85,8 +83,7 @@ class BookEdit extends Component {
     } else {
       this.setState({errorMessage: null});
       this.props.history.push('/book-list');
-//        this.props.navigation.navigate('/book-list');
-//      this.props.history.push('/book-list');
+//    this.props.navigation.navigate('/book-list');
     }
 
   }

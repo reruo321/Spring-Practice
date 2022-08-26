@@ -273,3 +273,16 @@ There would be several "Internal Server Error" messages such as:
     GET http://localhost:3000/api/books/undefined 500 (Internal Server Error)
 
 I took the errors while trying to edit or delete an entity. (Taking the action, the URL became http://localhost:3000/book-list/undefined.)
+
+### Warning: deprecated findDOMNode
+
+    Warning: findDOMNode is deprecated in StrictMode. ...
+
+Simple solution is: Not using StrictMode.
+
+(index.js)
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+    <App />
+    );
