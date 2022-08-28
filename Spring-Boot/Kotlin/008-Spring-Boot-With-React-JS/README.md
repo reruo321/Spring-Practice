@@ -274,6 +274,20 @@ There would be several "Internal Server Error" messages such as:
 
 I took the errors while trying to edit or delete an entity. (Taking the action, the URL became http://localhost:3000/book-list/undefined.)
 
+    getById   @Api.js:30
+    componentDidMount   @BookEdit.js:59
+
+If you log *this.props* using console.log,
+
+(BookEdit.js)
+
+    async componentDidMount(){
+        console.log(this.props);
+        ...
+    }
+
+You'll find that *id* value is 'undefined'.
+
 ### Warning: deprecated findDOMNode
 
     Warning: findDOMNode is deprecated in StrictMode. ...

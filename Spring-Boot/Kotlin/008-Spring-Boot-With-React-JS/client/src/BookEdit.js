@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
+
 function withRouter(Component) {
     function ComponentWithRouter(props) {
         let location = useLocation();
         let params = useParams();
         let navigate = useNavigate();
+//        let match = useMatch("/book-list/");
         let match = { params: useParams() };
         let history = {
             back: () => navigate(-1),
@@ -53,9 +55,12 @@ class BookEdit extends Component {
   }
 
   async componentDidMount() {
+    console.log(this.props);
 //    const params = useParams();
+//        this.state.isCreate = this.props.params.id === 'new';
       this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
     if (!this.state.isCreate) {
+//          const response = await this.props.api.getById(this.props.params.id);
         const response = await this.props.api.getById(this.props.match.params.id);
       const book = await response.json();
       this.setState({item: book});
