@@ -55,6 +55,7 @@ class BookEdit extends Component {
   }
 
   async componentDidMount() {
+ //   const { id } = useParams();
     console.log(this.props);
 //    const params = useParams();
 //        this.state.isCreate = this.props.params.id === 'new';
