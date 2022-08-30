@@ -26,7 +26,7 @@ class App extends Component {
             element={<BookList api={api} navbar={navbar}/>}
           />
           <Route
-            path='/book-list/:id/*'
+            path='/book-list/:id'
             element={<BookEdit api={api} navbar={navbar}/>}
           />
         </Routes>
