@@ -3,7 +3,36 @@ import React, { Component } from 'react';
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
+const withRouter = WrappedComponent => props => {
+        const location = useLocation();
+        const params = useParams();
+        const navigate = useNavigate();
+//        let match = useMatch("/book-list/");
+        const match = { params: useParams() };
+        const history = {
+            back: () => navigate(-1),
+            goBack: () => navigate(-1),
+            location,
+            push: (url: string, state?: any) => navigate(url, { state }),
+            replace: (url: string, state?: any) => navigate(url, {
+              replace: true,
+              state
+            })
+            };
 
+        return (
+            <WrappedComponent
+                {...props}
+                history={history}
+                location={location}
+                params={params}
+                navigate={navigate}
+                match={match}
+            />
+        );
+};
+
+/*
 function withRouter(Component) {
     function ComponentWithRouter(props) {
         let location = useLocation();
@@ -35,9 +64,8 @@ function withRouter(Component) {
     }
     return ComponentWithRouter
 }
-
-class BookEdit extends Component {
-
+*/
+class BookEdit extends React.Component {
   emptyItem = {
     name: '',
     genre: ''
@@ -57,6 +85,9 @@ class BookEdit extends Component {
   async componentDidMount() {
  //   const { id } = useParams();
     console.log(this.props);
+    console.log(this.props.match);
+    console.log(this.props.match.params);
+    console.log(this.props.match.params.id);
 //    const params = useParams();
 //        this.state.isCreate = this.props.params.id === 'new';
       this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
