@@ -3,44 +3,14 @@ import React, { Component } from 'react';
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
-const withRouter = WrappedComponent => props => {
+export function withRouter(Component) {
+    function ComponentWithRouter(props) {
         const location = useLocation();
         const params = useParams();
         const navigate = useNavigate();
 //        let match = useMatch("/book-list/");
         const match = { params: useParams() };
         const history = {
-            back: () => navigate(-1),
-            goBack: () => navigate(-1),
-            location,
-            push: (url: string, state?: any) => navigate(url, { state }),
-            replace: (url: string, state?: any) => navigate(url, {
-              replace: true,
-              state
-            })
-            };
-
-        return (
-            <WrappedComponent
-                {...props}
-                history={history}
-                location={location}
-                params={params}
-                navigate={navigate}
-                match={match}
-            />
-        );
-};
-
-/*
-function withRouter(Component) {
-    function ComponentWithRouter(props) {
-        let location = useLocation();
-        let params = useParams();
-        let navigate = useNavigate();
-//        let match = useMatch("/book-list/");
-        let match = { params: useParams() };
-        let history = {
             back: () => navigate(-1),
             goBack: () => navigate(-1),
             location,
@@ -64,8 +34,8 @@ function withRouter(Component) {
     }
     return ComponentWithRouter
 }
-*/
-class BookEdit extends React.Component {
+
+class BookEdit extends Component {
   emptyItem = {
     name: '',
     genre: ''
@@ -90,7 +60,7 @@ class BookEdit extends React.Component {
     console.log(this.props.match.params.id);
 //    const params = useParams();
 //        this.state.isCreate = this.props.params.id === 'new';
-      this.state.isCreate = this.props.match.params.id === 'new'; // are we editing or creating?
+      this.state.isCreate = this.props.params.id === 'new'; // are we editing or creating?
     if (!this.state.isCreate) {
 //          const response = await this.props.api.getById(this.props.params.id);
         const response = await this.props.api.getById(this.props.match.params.id);
