@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
-import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate, useMatch } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
-export function withRouter(Component) {
+function withRouter(Component) {
     function ComponentWithRouter(props) {
         const location = useLocation();
         const params = useParams();
         const navigate = useNavigate();
-//        let match = useMatch("/book-list/");
         const match = { params: useParams() };
         const history = {
             back: () => navigate(-1),
@@ -24,6 +23,7 @@ export function withRouter(Component) {
         return (
             <Component
                 {...props}
+                router={{location, navigate, params}}
                 history={history}
                 location={location}
                 params={params}
