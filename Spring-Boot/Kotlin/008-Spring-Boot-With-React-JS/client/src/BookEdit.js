@@ -8,7 +8,8 @@ function withRouter(Component) {
         const location = useLocation();
         const params = useParams();
         const navigate = useNavigate();
-        const match = { params: useParams() };
+        const match = useMatch("/book-list/:id");
+//        const match = { params: useParams() };
         const history = {
             back: () => navigate(-1),
             goBack: () => navigate(-1),
@@ -54,9 +55,9 @@ class BookEdit extends Component {
 
   async componentDidMount() {
  //   const { id } = useParams();
-    console.log(this.props);
+//    console.log(this.props);
     console.log(this.props.match);
-    console.log(this.props.match.params);
+//    console.log(this.props.match.params);
     console.log(this.props.match.params.id);
 //    const params = useParams();
 //        this.state.isCreate = this.props.params.id === 'new';
