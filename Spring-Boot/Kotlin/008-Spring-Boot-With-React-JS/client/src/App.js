@@ -1,12 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Home from './Home';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BookList from './BookList';
 import BookEdit from './BookEdit';
 import Api from './Api';
 import NavBar from './NavBar';
 
+const api = new Api();
+
+export default function App() {
+    const navbar = <NavBar/>;
+
+    return (
+      <Router>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list'
+            element={<BookList api={api} navbar={navbar}/>}
+          />
+          <Route
+            path='/book-list/:id'
+            element={<BookEdit api={api} navbar={navbar}/>}
+          />
+        </Routes>
+      </Router>
+    );
+}
+
+
+/*
 const api = new Api();
 
 class App extends Component {
@@ -36,6 +63,8 @@ class App extends Component {
 }
 
 export default App;
+*/
+
 
 /*
 function App() {
