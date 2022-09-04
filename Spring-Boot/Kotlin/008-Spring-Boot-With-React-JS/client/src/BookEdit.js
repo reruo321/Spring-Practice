@@ -3,13 +3,41 @@ import React, { Component } from 'react';
 import { Link, useParams, useLocation, useNavigate, useMatch } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
+export function withRouter(Children){
+    return(props)=>{
+        const location = useLocation();
+        const params = useParams();
+        const navigate = useNavigate();
+        const match = {params: useParams()};
+        const history = {
+            back: () => navigate(-1),
+            goBack: () => navigate(-1),
+            location,
+            push: (url: string, state?: any) => navigate(url, { state }),
+            replace: (url: string, state?: any) => navigate(url, {
+                replace: true,
+                state
+                })
+            };
+        return <Children {...props}
+            location = {location}
+            params = {params}
+            navigate = {navigate}
+            match = {match}
+            history = {history}
+            />
+    }
+
+}
+
+/*
 function withRouter(Component) {
     function ComponentWithRouter(props) {
         const location = useLocation();
         const params = useParams();
         const navigate = useNavigate();
-        const match = useMatch("/book-list/:id");
-//        const match = { params: useParams() };
+//        const match = useMatch("/book-list/:id");
+        const match = { params: useParams() };
         const history = {
             back: () => navigate(-1),
             goBack: () => navigate(-1),
@@ -35,8 +63,8 @@ function withRouter(Component) {
     }
     return ComponentWithRouter
 }
-
-class BookEdit extends Component {
+*/
+class BookEdit extends React.Component {
   emptyItem = {
     name: '',
     genre: ''
