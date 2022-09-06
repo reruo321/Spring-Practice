@@ -3,12 +3,10 @@ import './App.css';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
 
-class Home extends Component {
-
-  render() {
+function Home(props) {
     return (
       <div className="app">
-        {this.props.navbar}
+        {props.navbar}
         <Container fluid>
           <div>
             <Button color="secondary">
@@ -18,7 +16,6 @@ class Home extends Component {
         </Container>
       </div>
     );
-  }
 }
 
 export default Home;
