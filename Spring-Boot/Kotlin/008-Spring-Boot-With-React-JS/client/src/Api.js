@@ -1,3 +1,63 @@
+function Api(authToken) {
+
+  let headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  };
+
+  const BASE_URL = '/api/books';
+
+  function createHeaders() {
+    return authToken ? {
+      ...headers,
+      'Authorization': 'Bearer ' + authToken
+    } : headers;
+  }
+
+  const getAll = async () => {
+    return await fetch(BASE_URL, {
+      method: 'GET',
+      headers: createHeaders()
+    });
+  }
+
+  const getById = async (id) => {
+    console.log(id)
+    return await fetch(`${BASE_URL}/${id}`, {
+      method: 'GET',
+      headers: createHeaders()
+    });
+  }
+
+  const deleteItem = async (id) => {
+    return await fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE',
+      headers: createHeaders()
+    });
+  }
+
+  const update = async (item) => {
+    return await fetch(`${BASE_URL}/${item.id}`, {
+      method: 'PUT',
+      headers: createHeaders(),
+      body: JSON.stringify(item)
+    });
+  }
+
+  const create = async (item) => {
+    return await fetch(BASE_URL, {
+      method: 'POST',
+      headers: createHeaders(),
+      body: JSON.stringify(item)
+    });
+  }
+}
+
+export default Api;
+
+
+
+/*
 class Api {
 
   constructor(authToken) {
@@ -58,3 +118,4 @@ class Api {
 }
 
 export default Api;
+*/
