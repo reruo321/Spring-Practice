@@ -23,15 +23,9 @@ const Book = (props) => (
 
 function BookList() {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: [],
-      isLoading: true,
-      errorMessage: null
-    };
-    this.remove = this.remove.bind(this);
-  }
+    const [books, setBooks] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState();
 
   async componentDidMount() {
     this.setState({isLoading: true});
