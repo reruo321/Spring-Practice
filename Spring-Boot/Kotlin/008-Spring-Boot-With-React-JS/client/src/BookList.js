@@ -27,11 +27,11 @@ function BookList() {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState();
 
-  async componentDidMount() {
-    this.setState({isLoading: true});
-    const response = await this.props.api.getAll();
+  useEffect(async () => {
+    setState({isLoading: true});
+    const response = await props.api.getAll();
     if (!response.ok) {
-      this.setState({
+      setState({
           errorMessage: `Failed to load Books: ${response.status} ${response.statusText}`,
           isLoading: false
         }
@@ -40,27 +40,26 @@ function BookList() {
     else {
       const body = await response.json();
       const books = body._embedded.books;
-      this.setState({
+      setState({
         books: books,
         isLoading: false,
         errorMessage: null
       });
     }
-  }
+  }, []);
 
-  async remove(id) {
-    let response = await this.props.api.delete(id);
+  const remove = async (id) {
+    let response = await props.api.delete(id);
     if (!response.ok) {
-      this.setState({errorMessage: `Failed to delete book: ${response.status} ${response.statusText}`})
+      setState({errorMessage: `Failed to delete book: ${response.status} ${response.statusText}`})
     }
     else {
-      let updatedBooks = [...this.state.books].filter(i => i.id !== id);
-      this.setState({books: updatedBooks, errorMessage: null});
+      let updatedBooks = [...state.books].filter(i => i.id !== id);
+      setState({books: updatedBooks, errorMessage: null});
     }
   }
 
-  render() {
-    const {books, isLoading, errorMessage} = this.state;
+    const {books, isLoading, errorMessage} = state;
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -68,7 +67,7 @@ function BookList() {
 
     return (
       <div>
-        {this.props.navbar}
+        {props.navbar}
         <div className="d-flex flex-row justify-content-between p-3">
           <h3 className="book-list-title">Books</h3>
           <Button color="success" tag={Link} to="/book-list/new">Add New</Button>
@@ -82,13 +81,12 @@ function BookList() {
         }
         <div className="d-flex flex-row flex-container flex-wrap justify-content-center">
           {books.map( (book, index) =>
-            <Book {...book} remove={this.remove.bind(this)} key={index}/>
+            <Book {...book} remove={remove.bind(this)} key={index}/>
           )}
           {!books || books.length === 0 ? <p>No books!</p> : null}
         </div>
       </div>
     );
-  }
 }
 
 export default BookList;
