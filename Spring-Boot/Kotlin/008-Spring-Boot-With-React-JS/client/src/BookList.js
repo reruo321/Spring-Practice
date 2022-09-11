@@ -48,7 +48,7 @@ function BookList() {
     }
   }, []);
 
-  const remove = async (id) {
+  const remove = async (id) => {
     let response = await props.api.delete(id);
     if (!response.ok) {
       setState({errorMessage: `Failed to delete book: ${response.status} ${response.statusText}`})
@@ -58,8 +58,6 @@ function BookList() {
       setState({books: updatedBooks, errorMessage: null});
     }
   }
-
-    const {books, isLoading, errorMessage} = state;
 
     if (isLoading) {
       return <p>Loading...</p>;
