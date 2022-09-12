@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Alert,
   Button
@@ -21,41 +21,40 @@ const Book = (props) => (
   </div>
 );
 
-function BookList() {
+function BookList(props) {
 
     const [books, setBooks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState();
 
-  useEffect(async () => {
-    setState({isLoading: true});
-    const response = await props.api.getAll();
-    if (!response.ok) {
-      setState({
-          errorMessage: `Failed to load Books: ${response.status} ${response.statusText}`,
-          isLoading: false
+  useEffect(() => {
+    const fetchData = async () => {
+        setIsLoading(true);
+        const response = await props.api.getAll();
+        if (!response.ok) {
+            setErrorMessage(`Failed to load Books: ${response.status} ${response.statusText}`);
+            setIsLoading(false);
         }
-      )
-    }
-    else {
-      const body = await response.json();
-      const books = body._embedded.books;
-      setState({
-        books: books,
-        isLoading: false,
-        errorMessage: null
-      });
-    }
+        else {
+          const body = await response.json();
+          const books = body._embedded.books;
+          setBooks(books);
+          setIsLoading(false);
+          setErrorMessage();
+        }
+    };
+    fetchData();
   }, []);
 
   const remove = async (id) => {
     let response = await props.api.delete(id);
     if (!response.ok) {
-      setState({errorMessage: `Failed to delete book: ${response.status} ${response.statusText}`})
+        setErrorMessage(`Failed to delete book: ${response.status} ${response.statusText}`);
     }
     else {
-      let updatedBooks = [...state.books].filter(i => i.id !== id);
-      setState({books: updatedBooks, errorMessage: null});
+      let updatedBooks = [...books].filter(i => i.id !== id);
+        setBooks(updatedBooks);
+        setErrorMessage();
     }
   }
 
