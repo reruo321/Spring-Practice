@@ -27,11 +27,10 @@ function BookList(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState();
 
-
   useEffect(() => {
     const fetchData = async () => {
         setIsLoading(true);
-        const response = await props.api.getAll();
+        const response = await props.api.getAll;
         if (!response.ok) {
             setErrorMessage(`Failed to load Books: ${response.status} ${response.statusText}`);
             setIsLoading(false);
