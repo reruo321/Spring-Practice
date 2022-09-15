@@ -46,6 +46,7 @@ function BookList(props) {
     fetchData();
   }, []);
 
+
   const remove = async (id) => {
     let response = await props.api.delete(id);
     if (!response.ok) {
