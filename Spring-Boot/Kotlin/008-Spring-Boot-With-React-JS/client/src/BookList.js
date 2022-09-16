@@ -4,6 +4,7 @@ import {
   Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Api } from './Api';
 
 const Book = (props) => (
   <div className="book-container p-2 m-2 d-flex flex-column">
@@ -29,18 +30,24 @@ function BookList(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-        setIsLoading(true);
-        const response = await props.api.getAll;
-        if (!response.ok) {
-            setErrorMessage(`Failed to load Books: ${response.status} ${response.statusText}`);
-            setIsLoading(false);
+        try{
+            setIsLoading(true);
+            const response = await Api.getAll();
+            console.log(response);
+            if (!response.ok) {
+                setErrorMessage(`Failed to load Books: ${response.status} ${response.statusText}`);
+                setIsLoading(false);
+            }
+            else {
+              const body = await response.json();
+              const books = body._embedded.books;
+              setBooks(books);
+              setIsLoading(false);
+              setErrorMessage();
+            }
         }
-        else {
-          const body = await response.json();
-          const books = body._embedded.books;
-          setBooks(books);
-          setIsLoading(false);
-          setErrorMessage();
+        catch (e) {
+            console.log(e);
         }
     };
     fetchData();

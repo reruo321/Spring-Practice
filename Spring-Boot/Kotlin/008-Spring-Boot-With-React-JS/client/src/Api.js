@@ -1,4 +1,4 @@
-function Api(authToken) {
+export function Api(authToken) {
 
   let headers = {
     'Accept': 'application/json',
