@@ -55,8 +55,6 @@ export function Api(authToken) {
 
 export default Api;
 
-
-
 /*
 class Api {
 
