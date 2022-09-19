@@ -33,7 +33,7 @@ function BookList(props) {
     const fetchData = async () => {
             setIsLoading(true);
 //    const response = await props.api.getAll();
-            const response = await props.Api.getAll;
+            const response = await props.api;
             console.log(response);
         if (!response.ok) {
             setErrorMessage(`Failed to load Books: ${response.status} ${response.statusText}`);

@@ -1,6 +1,6 @@
 export function Api(authToken) {
 
-  let headers = {
+  const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   };
@@ -14,14 +14,14 @@ export function Api(authToken) {
     } : headers;
   }
 
-  const getAll = async () => {
+  async function getAll() {
     return await fetch(BASE_URL, {
       method: 'GET',
       headers: createHeaders()
     });
   }
 
-  const getById = async (id) => {
+  async function getById(id) {
     console.log(id)
     return await fetch(`${BASE_URL}/${id}`, {
       method: 'GET',
@@ -29,14 +29,14 @@ export function Api(authToken) {
     });
   }
 
-  const deleteItem = async (id) => {
+  async function deleteItem(id) {
     return await fetch(`${BASE_URL}/${id}`, {
       method: 'DELETE',
       headers: createHeaders()
     });
   }
 
-  const update = async (item) => {
+  async function update(item) {
     return await fetch(`${BASE_URL}/${item.id}`, {
       method: 'PUT',
       headers: createHeaders(),
@@ -44,7 +44,7 @@ export function Api(authToken) {
     });
   }
 
-  const create = async (item) => {
+  async function create(item) {
     return await fetch(BASE_URL, {
       method: 'POST',
       headers: createHeaders(),
