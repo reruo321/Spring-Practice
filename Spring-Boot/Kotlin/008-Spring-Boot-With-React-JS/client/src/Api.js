@@ -1,4 +1,4 @@
-export function Api(authToken) {
+const Api = (authToken) => {
 
   const headers = {
     'Accept': 'application/json',
@@ -7,21 +7,21 @@ export function Api(authToken) {
 
   const BASE_URL = '/api/books';
 
-  function createHeaders() {
+  const createHeaders = () => {
     return authToken ? {
       ...headers,
       'Authorization': 'Bearer ' + authToken
     } : headers;
   }
 
-  async function getAll() {
+  const getAll = async () => {
     return await fetch(BASE_URL, {
       method: 'GET',
       headers: createHeaders()
     });
   }
 
-  async function getById(id) {
+  const getById = async (id) => {
     console.log(id)
     return await fetch(`${BASE_URL}/${id}`, {
       method: 'GET',
@@ -29,14 +29,14 @@ export function Api(authToken) {
     });
   }
 
-  async function deleteItem(id) {
+  const deleteItem = async (id) => {
     return await fetch(`${BASE_URL}/${id}`, {
       method: 'DELETE',
       headers: createHeaders()
     });
   }
 
-  async function update(item) {
+  const update = async (item) => {
     return await fetch(`${BASE_URL}/${item.id}`, {
       method: 'PUT',
       headers: createHeaders(),
@@ -44,7 +44,7 @@ export function Api(authToken) {
     });
   }
 
-  async function create(item) {
+  const create = async (item) => {
     return await fetch(BASE_URL, {
       method: 'POST',
       headers: createHeaders(),

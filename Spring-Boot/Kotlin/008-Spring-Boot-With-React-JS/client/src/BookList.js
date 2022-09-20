@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect, Component } from 'react';
 import {
   Alert,
   Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-//import { Api } from './Api';
+import './Api';
 
 const Book = (props) => (
   <div className="book-container p-2 m-2 d-flex flex-column">
@@ -32,8 +31,8 @@ function BookList(props) {
   useEffect(() => {
     const fetchData = async () => {
             setIsLoading(true);
-//    const response = await props.api.getAll();
-            const response = await props.api;
+    const response = await props.api.getAll;
+//            const response = await props.api;
             console.log(response);
         if (!response.ok) {
             setErrorMessage(`Failed to load Books: ${response.status} ${response.statusText}`);

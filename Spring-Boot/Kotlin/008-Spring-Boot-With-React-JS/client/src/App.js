@@ -7,7 +7,8 @@ import BookEdit from './BookEdit';
 import Api from './Api';
 import NavBar from './NavBar';
 
-const api = new Api();
+const api = Api;
+//console.log(api);
 
 export default function App() {
     const navbar = <NavBar/>;
